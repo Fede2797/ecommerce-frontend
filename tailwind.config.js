@@ -10,8 +10,8 @@ export default {
         "gray-text": '#5E6E89',
       },
       fontFamily: {
-        'poppins': "Poppins",
-        'roboto': "Roboto",
+        'poppins': "Poppins, verdana",
+        'roboto': "Roboto, verdana",
       }
     },
   },
