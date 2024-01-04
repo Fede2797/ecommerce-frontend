@@ -1,7 +1,7 @@
 
 export const Footer = () => {
   return (
-    <div className="w-full py-10 px-4 bg-black">
+    <div className="w-full py-10 px-4 bg-black mt-auto">
       <div className="w-full max-w-[1200px] min-h-[72px] mx-auto flex items-start justify-between text-white">
         {/* Logo & description */}
         <section className="w-full">

@@ -6,7 +6,13 @@ export default {
       colors: {
         black: '#272727',
         green: '#56B280',
+        "bg-gray": '#F7F8FA',
+        "gray-text": '#5E6E89',
       },
+      fontFamily: {
+        'poppins': "Poppins",
+        'roboto': "Roboto",
+      }
     },
   },
   plugins: [],
