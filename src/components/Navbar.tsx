@@ -16,7 +16,7 @@ export const Navbar = () => {
         {/* Right side navbar */}
         <div className="p-4">
           <figure className="w-[40px] h-[40px] flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
-            <img src="./images/icon-cart.svg" alt="" />
+            <img src="/images/icon-cart.svg" alt="" />
           </figure>
         </div>
       </div>
