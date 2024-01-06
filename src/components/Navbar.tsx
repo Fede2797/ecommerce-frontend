@@ -1,7 +1,7 @@
 
 export const Navbar = () => {
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white border-b-[1px] border-gray-200">
       <div className="w-full max-w-[1200px] min-h-[72px] mx-auto flex items-center justify-between">
         {/* Left side navbar */}
         <div className="p-4 font-bold cursor-pointer">

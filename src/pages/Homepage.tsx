@@ -1,6 +1,6 @@
 import { Layout } from '../layout/Layout';
 import { ProductCard } from '../components/ProductCard';
-import { products } from '../data';
+import { hardcodedProducts } from '../data';
 
 export const Homepage = () => {
   return (
@@ -21,7 +21,7 @@ export const Homepage = () => {
           {/* Product container */}
           <div className='w-full grid grid-cols-4 gap-[30px]'>
             {
-              products?.map( prod => (
+              hardcodedProducts?.map( prod => (
                 <ProductCard product={prod}/>
               ))
             }

@@ -1,4 +1,4 @@
-export const products = [
+export const hardcodedProducts = [
   {
     imgSource: "jordan.png",
     name: "Air Jordan shoes Nike",
