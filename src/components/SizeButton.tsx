@@ -1,8 +1,4 @@
-
-interface SyzeType {
-  size: number, 
-  available: boolean
-};
+import { SyzeType } from "../types/AppTypes"
 
 export const SizeButton = ({size, sizeSelected, setSizeSelected}: {size: SyzeType, sizeSelected: any, setSizeSelected:any}) => {
   return (

@@ -29,7 +29,6 @@ export const ProductListPage = () => {
   }, [products, orderBy]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value);
     setOrderBy(e.target.value);
   }
 

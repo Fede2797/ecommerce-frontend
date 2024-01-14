@@ -9,3 +9,8 @@ export interface ProductType {
   name: string,
   price: number
 }
+
+export interface SyzeType {
+  size: number, 
+  available: boolean
+};
