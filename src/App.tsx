@@ -1,7 +1,5 @@
-import { Homepage } from './pages/Homepage';
-import { ProductListPage } from './pages/ProductListPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ProductPage } from './pages/ProductPage';
+import { Homepage, ProductListPage,  ProductPage,  UploadPage } from './pages';
 
 function App() {
 
@@ -12,6 +10,7 @@ function App() {
         <Route path="/products" Component={ProductListPage} />
         {/* <Route path="/products/:productId" Component={ProductPage} /> */}
         <Route path="/products/jordan" Component={ProductPage} />
+        <Route path="/admin/upload" Component={UploadPage} />
       </Routes>
     </BrowserRouter>
   )
