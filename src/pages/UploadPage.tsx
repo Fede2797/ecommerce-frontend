@@ -40,8 +40,7 @@ const kidsSizes = [
 
 const SizeButton = ({size, toggleSizeAvailability}: {size: SyzeType, toggleSizeAvailability: ( sizeNumber: number) => void}) => {
   
-  return (<button 
-    key={size.size}
+  return (<button
     className={`w-10 h-10 flex justify-center items-center text-center rounded-[3px] border-[#D2D2D2] border-[1px] font-roboto font-normal tracking-tighter cursor-pointer duration-200
     ${
       size.available 
@@ -50,7 +49,6 @@ const SizeButton = ({size, toggleSizeAvailability}: {size: SyzeType, toggleSizeA
     }
     `}
     onClick={ () => toggleSizeAvailability(size.size) }
-    disabled={ size.available ? false : true }
   >
     {size.size}
   </button>);
@@ -79,8 +77,8 @@ export const UploadPage = () => {
     setSizes(updatedSizes);
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -98,8 +96,7 @@ export const UploadPage = () => {
             <input 
               type="text" 
               id="product_name" 
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Product name" 
-              required 
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Product name"
             />
         </div>
         <div>
@@ -107,8 +104,7 @@ export const UploadPage = () => {
             <input 
               type="text" 
               id="product_price" 
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="9.99" 
-              required 
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="9.99"
             />
         </div>
         <div>
@@ -119,22 +115,28 @@ export const UploadPage = () => {
             value={category}
             onChange={handleChange}
           >
-            <option value="men" selected>Men</option>
+            <option value="men">Men</option>
             <option value="women">Woman</option>
             <option value="kids">Kids</option>
           </select>
         </div>
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-900 ">Available sizes</label>
-          <li className="mt-3">
-            <div className="max-w-[230px] grid grid-cols-5 grid-rows-2 gap-2">
-              {
-                sizes.map( size => (
-                  <SizeButton size={size} toggleSizeAvailability={toggleSizeAvailability} />
-                ))
-              }
-            </div>
+          <li className="mt-3 max-w-[230px] grid grid-cols-5 grid-rows-2 gap-2">
+            {
+              sizes.map( size => (
+                <SizeButton 
+                  key={`${size.size}`}
+                  size={size}
+                  toggleSizeAvailability={toggleSizeAvailability}
+                />
+              ))
+            }
           </li>
+        </div>
+        <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900">Upload image</label>
+            
         </div>
       </form>
     </div>
