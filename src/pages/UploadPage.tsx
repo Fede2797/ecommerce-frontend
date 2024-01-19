@@ -41,6 +41,7 @@ const kidsSizes = [
 const SizeButton = ({size, toggleSizeAvailability}: {size: SyzeType, toggleSizeAvailability: ( sizeNumber: number) => void}) => {
   
   return (<button
+    type="button"
     className={`w-10 h-10 flex justify-center items-center text-center rounded-[3px] border-[#D2D2D2] border-[1px] font-roboto font-normal tracking-tighter cursor-pointer duration-200
     ${
       size.available 
@@ -56,14 +57,36 @@ const SizeButton = ({size, toggleSizeAvailability}: {size: SyzeType, toggleSizeA
 
 export const UploadPage = () => {
 
+  const [productName, setProductName] = useState("");
+  const [price, setPrice] = useState("");
   const [category, setCategory] = useState('men');
   const [sizes, setSizes] = useState(menSizes);
+  const [selectedImage, setSelectedImage] = useState<File>();
 
   useEffect(() => {
     category === "men" && setSizes(menSizes);
     category === "women" && setSizes(womenSizes);
     category === "kids" && setSizes(kidsSizes);
   }, [category]);
+
+  const resetFields = () => {
+    setProductName("");
+    setPrice("");
+    setCategory("men");
+    setSelectedImage(undefined);
+  }
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setProductName(event.target.value);
+  }
+
+  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(event.target.value);
+  }
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedImage(event.target.files?.[0]);
+  }
   
   const toggleSizeAvailability = ( sizeNumber: number ) => {
     const updatedSizes = sizes.map( size => {
@@ -78,7 +101,28 @@ export const UploadPage = () => {
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+    event.preventDefault();
+
+    if ( !(productName &&
+      price &&
+      category &&
+      sizes &&
+      selectedImage) ) {
+
+      console.log("At least one field is missing");
+      return;
+    }
+
+    const data = {
+      name: productName,
+      price: price,
+      category: category,
+      sizes: sizes,
+      imgSource: selectedImage,
+    }
+
+    console.log(data);
+    resetFields();
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -91,22 +135,33 @@ export const UploadPage = () => {
         className="w-full max-w-[400px] flex flex-col m-4 p-4 gap-3" 
         onSubmit={handleSubmit}
       >
+        {/* Product name */}
         <div>
             <label className="block mb-2 text-sm font-medium text-gray-900">Product name</label>
             <input 
               type="text" 
               id="product_name" 
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Product name"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              placeholder="Product name"
+              value={productName}
+              onChange={handleNameChange}
+              required
             />
         </div>
+        {/* Product price */}
         <div>
             <label className="block mb-2 text-sm font-medium text-gray-900">Price</label>
             <input 
               type="text" 
               id="product_price" 
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="9.99"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              placeholder="9.99"
+              value={price}
+              onChange={handlePriceChange}
+              required
             />
         </div>
+        {/* Product category */}
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-900 ">Category</label>
           <select 
@@ -120,6 +175,7 @@ export const UploadPage = () => {
             <option value="kids">Kids</option>
           </select>
         </div>
+        {/* Product sizes */}
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-900 ">Available sizes</label>
           <li className="mt-3 max-w-[230px] grid grid-cols-5 grid-rows-2 gap-2">
@@ -134,9 +190,26 @@ export const UploadPage = () => {
             }
           </li>
         </div>
+        {/* Product image */}
         <div>
             <label className="block mb-2 text-sm font-medium text-gray-900">Upload image</label>
-            
+            <input 
+              className="block w-full text-sm text-gray-900 border border-gray-300 cursor-pointer bg-gray-50 focus:outline-none" 
+              aria-describedby="file_input_help" 
+              id="file_input" 
+              type="file"
+              onChange={handleFileChange}
+              required
+            />
+        </div>
+        {/* Submit button */}
+        <div className="flex justify-center mt-4">
+            <button 
+              className="bg-blue-600 border py-1 px-2 rounded-lg text-white hover:bg-blue-500 transition-all"
+              type="submit"
+            >
+              Submit product
+            </button>
         </div>
       </form>
     </div>
