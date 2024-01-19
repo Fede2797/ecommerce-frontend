@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";  
 import { SyzeType } from "../types/AppTypes";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const menSizes = [
   { size: 40, available: true },
   { size: 40.5, available: true },
@@ -49,7 +52,7 @@ const SizeButton = ({size, toggleSizeAvailability}: {size: SyzeType, toggleSizeA
         : "bg-[#efefef] text-[#ADADAD] "
     }
     `}
-    onClick={ () => toggleSizeAvailability(size.size) }
+    onClick={() => toggleSizeAvailability(size.size)}
   >
     {size.size}
   </button>);
@@ -62,6 +65,8 @@ export const UploadPage = () => {
   const [category, setCategory] = useState('men');
   const [sizes, setSizes] = useState(menSizes);
   const [selectedImage, setSelectedImage] = useState<File>();
+
+  const notify = () => toast.success("Product succesfully added");
 
   useEffect(() => {
     category === "men" && setSizes(menSizes);
@@ -122,6 +127,7 @@ export const UploadPage = () => {
     }
 
     console.log(data);
+    notify();
     resetFields();
   }
 
@@ -212,6 +218,7 @@ export const UploadPage = () => {
             </button>
         </div>
       </form>
+      <ToastContainer />
     </div>
   )
 }
