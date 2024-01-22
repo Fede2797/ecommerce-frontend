@@ -3,6 +3,7 @@ import { SyzeType } from "../types/AppTypes";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { postProduct } from "../api/postProduct";
 
 const menSizes = [
   { size: 40, available: true },
@@ -64,9 +65,10 @@ export const UploadPage = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState('men');
   const [sizes, setSizes] = useState(menSizes);
-  const [selectedImage, setSelectedImage] = useState<File>();
+  const [selectedImage, setSelectedImage] = useState<File | null>();
 
-  const notify = () => toast.success("Product succesfully added");
+  const notifySucces = () => toast.success("Product succesfully added");
+  const notifyError = () => toast.error("There was a problem while uploading the product");
 
   useEffect(() => {
     category === "men" && setSizes(menSizes);
@@ -77,8 +79,9 @@ export const UploadPage = () => {
   const resetFields = () => {
     setProductName("");
     setPrice("");
+    setCategory("women");
     setCategory("men");
-    setSelectedImage(undefined);
+    setSelectedImage(null);
   }
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,7 +108,7 @@ export const UploadPage = () => {
     setSizes(updatedSizes);
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if ( !(productName &&
@@ -125,9 +128,14 @@ export const UploadPage = () => {
       sizes: sizes,
       imgSource: selectedImage,
     }
+    
+    const responseStatus = await postProduct(data);
 
-    console.log(data);
-    notify();
+    if (responseStatus === 200) {
+      notifySucces();
+    } else {
+      notifyError();
+    }
     resetFields();
   }
 
