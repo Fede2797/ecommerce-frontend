@@ -2,6 +2,7 @@ import { Layout } from '../layout/Layout';
 import { ProductCard } from '../components/ProductCard';
 import { useEffect, useState } from 'react';
 import { getPopularProducts } from '../api/getProducts';
+import { ProductType } from '../types/AppTypes';
 
 export const Homepage = () => {
 
@@ -35,8 +36,8 @@ export const Homepage = () => {
           {/* Product container */}
           <div className='w-full grid grid-cols-4 gap-[30px]'>
             {
-              products?.map( prod => (
-                <ProductCard product={prod}/>
+              products?.map( (prod: ProductType) => (
+                <ProductCard key={prod.name} product={prod}/>
               ))
             }
           </div>

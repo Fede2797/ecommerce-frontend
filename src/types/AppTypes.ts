@@ -1,13 +1,17 @@
-export interface ProductCardType {
-  imgSource: string,
+export interface ProductType {
   name: string,
-  price: number
+  price: string,
+  category: string,
+  sizes: SyzeType[],
+  imgSource: string,
 }
 
-export interface ProductType {
-  imgSource: string,
+export interface ProductUploadType {
   name: string,
-  price: number
+  price: string,
+  category: string,
+  sizes: SyzeType[],
+  imgSource: File,
 }
 
 export interface SyzeType {
