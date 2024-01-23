@@ -2,12 +2,12 @@ import { ProductCardType } from "../types/AppTypes"
 
 export const ProductCard = ({product}: {product: ProductCardType}) => {
   return (
-    <article key={product.name} className="group w-[255px] max-h-[230px] shadow-[0px_4px_24px_0px_rgba(123,123,123,0.15)] hover:shadow-[0px_4px_30px_0px_rgba(123,123,123,0.35)] transition-all duration-200 cursor-pointer relative overflow-hidden">
+    <article className="group w-[255px] max-h-[230px] shadow-[0px_4px_24px_0px_rgba(123,123,123,0.15)] hover:shadow-[0px_4px_30px_0px_rgba(123,123,123,0.35)] transition-all duration-200 cursor-pointer relative overflow-hidden">
       <div className='h-[150px] overflow-hidden flex justify-center items-center bg-bg-gray'>
         <img
           src={product.imgSource}
           alt={product.name}
-          className="w-full max-w-full max-h-full duration-200 group-hover:scale-110"
+          className="w-full max-w-[85%] duration-200 group-hover:scale-110"
         />
       </div>
       {/* Details */}

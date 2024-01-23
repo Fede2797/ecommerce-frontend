@@ -1,8 +1,17 @@
 import axios from 'axios';
+import { SyzeType } from '../types/AppTypes';
 
 const backurl = 'http://localhost:3000/api/products';
 
-export const postProduct = async ( data: any ) => {
+interface dataProps {
+  name: string,
+  price: string,
+  category: string,
+  sizes: SyzeType[],
+  imgSource: File,
+}
+
+export const postProduct = async ( data: dataProps ) => {
   const {name, price, category, sizes, imgSource } = data;
 
   const formData = new FormData();

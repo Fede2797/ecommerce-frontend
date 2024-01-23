@@ -1,8 +1,22 @@
 import { Layout } from '../layout/Layout';
 import { ProductCard } from '../components/ProductCard';
-import { hardcodedProducts } from '../data';
+import { useEffect, useState } from 'react';
+import { getPopularProducts } from '../api/getProducts';
 
 export const Homepage = () => {
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await getPopularProducts();
+      setProducts(response.data);
+    }
+
+    fetchProducts();
+  }, [])
+  
+
   return (
     <Layout>
       <div className='relative w-full flex flex-col items-start justify-start'>
@@ -21,7 +35,7 @@ export const Homepage = () => {
           {/* Product container */}
           <div className='w-full grid grid-cols-4 gap-[30px]'>
             {
-              hardcodedProducts?.map( prod => (
+              products?.map( prod => (
                 <ProductCard product={prod}/>
               ))
             }
