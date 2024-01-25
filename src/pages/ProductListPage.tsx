@@ -1,20 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Layout } from '../layout/Layout';
-import { ProductCard } from '../components/ProductCard';
-import { hardcodedProducts } from '../data';
+import { options } from '../config/constants';
 import { ProductType } from '../types/AppTypes';
-
-const options =[
-  { value: 'popularity', label: 'Popularity' },
-  { value: 'pricelowhigh', label: 'Price Low to High' },
-  { value: 'pricehighlow', label: 'Price High to Low' },
-]
-
-const categories = [
-  { name: "Women", imgSource: 'url("/categories/women.jpg")'}, 
-  { name: "Men", imgSource: 'url("/categories/men.jpg")'},
-  { name: "Kids", imgSource: 'url("/categories/kids.jpg")'},
-]
+import { getEveryProduct } from '../api/getProducts';
+import { ProductCard } from '../components/ProductCard';
+import { Categories } from '../components/Categories';
 
 export const ProductListPage = () => {
   const [numberOfResults, setNumberOfResults] = useState(0);
@@ -22,39 +12,26 @@ export const ProductListPage = () => {
   const [orderBy, setOrderBy] = useState('popularity');
 
   useEffect(() => {
-    setProducts(hardcodedProducts);
-    const length = hardcodedProducts.length;
+    const fetchProducts = async () => {
+      const response = await getEveryProduct({ page: 1 });
+      setProducts(response.data);
+      const length = response.data.length;
+      setNumberOfResults(length);
+    }
 
-    setNumberOfResults(length);
+    fetchProducts();
   }, [products, orderBy]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setOrderBy(e.target.value);
   }
 
-
   return (
     <Layout>
       <div className='relative w-full flex flex-col items-start justify-start'>
         {/* Cathegories section */}
-        <section className='m-auto max-w-[1200px]'>
-          <h1 className='mt-12 font-poppins text-[40px] text-center'>Shop</h1>
-          <ul className='flex gap-4'>
-            {
-              categories.map( category => (
-                <li 
-                  className={`w-[200px] h-[240px] flex flex-col justify-center text-center overflow-hidden  text-white text-lg font-semibold tracking-wider cursor-pointer select-none ${category.name === "Kids" ? "bg-cover bg-no-repeat bg-left" : ""}`} 
-                  style={{backgroundImage: category.imgSource}}
-                  key={category.name}
-                >
-                  <span className='drop-shadow-[0_0px_10px_rgba(0,0,0,.9)]'>{category.name}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-
-        {/* Products */}
+        <Categories />
+        {/* Products section*/}
         <section className='pt-10 pb-20 m-auto max-w-[1200px]'>
           {/* Order display & info */}
           <div className='mb-10 flex justify-between'>
@@ -87,12 +64,11 @@ export const ProductListPage = () => {
           <div className='w-full grid grid-cols-4 gap-[30px]'>
             {
               products?.map( prod => (
-                <ProductCard product={prod}/>
+                <ProductCard key={prod._id} product={prod}/>
               ))
             }
           </div>
         </section>
-
       </div>
     </Layout>
   )

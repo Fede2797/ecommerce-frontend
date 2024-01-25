@@ -1,63 +1,9 @@
 import { useEffect, useState } from "react";  
-import { SyzeType } from "../types/AppTypes";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { postProduct } from "../api/postProduct";
-
-const menSizes = [
-  { size: 40, available: true },
-  { size: 40.5, available: true },
-  { size: 41, available: true },
-  { size: 41.5, available: true },
-  { size: 42, available: true },
-  { size: 42.5, available: true },
-  { size: 43, available: true },
-  { size: 43.5, available: true },
-  { size: 44, available: true },
-  { size: 44.5, available: true }
-];
-const womenSizes = [
-  { size: 35, available: true },
-  { size: 35.5, available: true },
-  { size: 36, available: true },
-  { size: 36.5, available: true },
-  { size: 37, available: true },
-  { size: 37.5, available: true },
-  { size: 38, available: true },
-  { size: 38.5, available: true },
-  { size: 39, available: true },
-  { size: 39.5, available: true }
-];
-const kidsSizes = [
-  { size: 34, available: true },
-  { size: 34.5, available: true },
-  { size: 35, available: true },
-  { size: 35.5, available: true },
-  { size: 36, available: true },
-  { size: 36.5, available: true },
-  { size: 37, available: true },
-  { size: 37.5, available: true },
-  { size: 38, available: true },
-  { size: 38.5, available: true },
-];
-
-const SizeButton = ({size, toggleSizeAvailability}: {size: SyzeType, toggleSizeAvailability: ( sizeNumber: number) => void}) => {
-  
-  return (<button
-    type="button"
-    className={`w-10 h-10 flex justify-center items-center text-center rounded-[3px] border-[#D2D2D2] border-[1px] font-roboto font-normal tracking-tighter cursor-pointer duration-200
-    ${
-      size.available 
-        ? ""
-        : "bg-[#efefef] text-[#ADADAD] "
-    }
-    `}
-    onClick={() => toggleSizeAvailability(size.size)}
-  >
-    {size.size}
-  </button>);
-};
+import { menSizes, womenSizes, kidsSizes } from "../config/constants";
+import { SizeButtonUpload } from "../components/SizeButtonUpload";
 
 export const UploadPage = () => {
 
@@ -84,12 +30,8 @@ export const UploadPage = () => {
     setSelectedImage(null);
   }
 
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTargetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setProductName(event.target.value);
-  }
-
-  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(event.target.value);
   }
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -158,7 +100,7 @@ export const UploadPage = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
               placeholder="Product name"
               value={productName}
-              onChange={handleNameChange}
+              onChange={handleTargetChange}
               required
             />
         </div>
@@ -171,7 +113,7 @@ export const UploadPage = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
               placeholder="9.99"
               value={price}
-              onChange={handlePriceChange}
+              onChange={handleTargetChange}
               required
             />
         </div>
@@ -195,7 +137,7 @@ export const UploadPage = () => {
           <li className="mt-3 max-w-[230px] grid grid-cols-5 grid-rows-2 gap-2">
             {
               sizes.map( size => (
-                <SizeButton 
+                <SizeButtonUpload 
                   key={`${size.size}`}
                   size={size}
                   toggleSizeAvailability={toggleSizeAvailability}

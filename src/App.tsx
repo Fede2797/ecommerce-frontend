@@ -1,5 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Homepage, ProductListPage,  ProductPage,  UploadPage } from './pages';
+import { CategoryPage, 
+  Homepage, 
+  ProductListPage,  
+  ProductPage,  
+  UploadPage } from './pages';
 
 function App() {
 
@@ -8,6 +12,9 @@ function App() {
       <Routes>
         <Route path="/" Component={Homepage} />
         <Route path="/products" Component={ProductListPage} />
+        <Route path="/products/men" Component={() => (<CategoryPage category="men" />)} />
+        <Route path="/products/women" Component={() => (<CategoryPage category="women" />)} />
+        <Route path="/products/kids" Component={() => (<CategoryPage category="kids" />)} />
         {/* <Route path="/products/:productId" Component={ProductPage} /> */}
         <Route path="/products/jordan" Component={ProductPage} />
         <Route path="/admin/upload" Component={UploadPage} />
