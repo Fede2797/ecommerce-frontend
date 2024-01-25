@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { postProduct } from "../api/postProduct";
 import { menSizes, womenSizes, kidsSizes } from "../config/constants";
-import { SizeButtonUpload } from "../components/SizeButtonUpload";
+import { SizeButtonUpload } from "../components";
 
 export const UploadPage = () => {
 

@@ -4,7 +4,7 @@ import { hardcodedProducts } from '../data';
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import { useState } from "react";
-import { SizeButton } from "../components/SizeButton";
+import { SizeButton } from "../components";
 
 export const ProductPage = () => {
 

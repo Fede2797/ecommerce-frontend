@@ -1,5 +1,5 @@
 import { Layout } from '../layout/Layout';
-import { ProductCard } from '../components/ProductCard';
+import { ProductCard } from '../components';
 import { useEffect, useState } from 'react';
 import { getPopularProducts } from '../api/getProducts';
 import { ProductType } from '../types/AppTypes';
