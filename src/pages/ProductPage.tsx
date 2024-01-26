@@ -1,5 +1,4 @@
 import { Layout } from "../layout/Layout"
-import { hardcodedProducts } from '../data';
 
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
@@ -26,9 +25,6 @@ export const ProductPage = () => {
     }
     fetchProduct();
   }, [productId]);
-  
-
-  // const prod = hardcodedProducts[0];
 
   const handleQuantityChange = (e: React.FormEvent<HTMLInputElement>) => {
     const number = parseInt(e.currentTarget.value);
