@@ -22,8 +22,13 @@ export const getEveryProduct = async({ page = 1, limit = 40, sortBy = "popularit
   return response;
 }
 
-export const getCategoryProducts = async(category: string) => {
+export const getCategoryProducts = async({ page = 1, limit = 40, sortBy = "popularity", category }: {page: number, limit: number, sortBy: string, category: string}) => {
+  const paramsObj = {page: page.toString(), limit: limit.toString(), sortBy};
+  const searchParams = new URLSearchParams(paramsObj);
   const url = new URL("/api/products/" + category, baseUrl);
+
+  // Attach searchParams to the URL
+  url.search = searchParams.toString();
 
   const response = await axios.get(url.href);
   return response;

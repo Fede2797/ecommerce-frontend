@@ -24,11 +24,11 @@ export const Categories = () => {
             return (
               <Link 
                 to={linkTo}
+                key={category.name}
               >
                 <li 
                   className={`w-[200px] h-[240px] flex flex-col justify-center text-center overflow-hidden  text-white text-lg font-semibold tracking-wider cursor-pointer select-none ${category.name === "Kids" ? "bg-cover bg-no-repeat bg-left" : ""}`} 
                   style={{backgroundImage: category.imgSource}}
-                  key={category.name}
                 >
                   <span className='drop-shadow-[0_0px_10px_rgba(0,0,0,.9)]'>
                     {/* This string is built like this to capitalize the first letter of the category*/}

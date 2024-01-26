@@ -11,14 +11,14 @@ export const ProductListPage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await getEveryProduct({ page: 1 });
+      const response = await getEveryProduct({ page: 1, limit: 40, sortBy: orderBy });
       setProducts(response.data);
       const length = response.data.length;
       setNumberOfResults(length);
     }
 
     fetchProducts();
-  }, [products, orderBy]);
+  }, [orderBy]);
 
   return (
     <Layout>

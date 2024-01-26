@@ -13,14 +13,13 @@ export const CategoryPage = ({category}: {category: string}) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await getCategoryProducts(category);
-      console.log("response" + response.data);
+      const response = await getCategoryProducts({ page: 1, limit: 40, sortBy: orderBy, category });
       setProducts(response.data);
       const length = response.data.length;
       setNumberOfResults(length);
     }
     fetchProducts();
-  }, [])
+  }, [orderBy])
 
   return (
     <Layout>
