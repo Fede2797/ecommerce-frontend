@@ -39,16 +39,17 @@ export const ProductPage = () => {
 
   return (
     <Layout>
-      <section className="w-full max-w-[1200px] p-4 m-auto flex justify-center gap-6">
+      <section className="w-full max-w-[1200px] px-4 py-10 m-auto flex justify-center gap-6">
         {/* Product image */}
         <div className="w-full flex justify-end">
-          <figure className="flex justify-center items-center bg-[#F7F8FA] h-full">
+          <figure className="max-w-[500px] h-[400px] flex justify-center items-center bg-[#F7F8FA] overflow-hidden">
             {/* Image-Zoom component */}
             <Zoom>
                 <img
                   alt="That Wanaka Tree, New Zealand by Laura Smetsers"
                   src={product?.imgSource}
-                  width="500"
+                  className="p-4"
+                  // width="500"
                 />
             </Zoom>
           </figure>
