@@ -1,3 +1,9 @@
+export const frontUrl = "http://localhost:5173/";
+export const productsRoute = "products";
+export const womenRoute = "products/women";
+export const menRoute = "products/men";
+export const kidsRoute = "products/kids";
+
 export const options =[
   { value: 'popularity', label: 'Popularity' },
   { value: 'pricelowhigh', label: 'Price Low to High' },
@@ -5,9 +11,9 @@ export const options =[
 ]
 
 export const categories = [
-  { name: "Women", imgSource: 'url("/categories/women.jpg")'}, 
-  { name: "Men", imgSource: 'url("/categories/men.jpg")'},
-  { name: "Kids", imgSource: 'url("/categories/kids.jpg")'},
+  { name: "women", imgSource: 'url("/categories/women.jpg")'}, 
+  { name: "men", imgSource: 'url("/categories/men.jpg")'},
+  { name: "kids", imgSource: 'url("/categories/kids.jpg")'},
 ]
 
 export const menSizes = [

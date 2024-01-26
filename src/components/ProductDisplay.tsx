@@ -9,7 +9,7 @@ export const ProductDisplay = ({products, numberOfResults, orderBy, setOrderBy} 
   }
 
   return (
-    <section className='pt-10 pb-20 m-auto max-w-[1200px]'>
+    <section className='w-full pt-10 pb-20 m-auto max-w-[1200px]'>
       {/* Order display & info */}
       <div className='mb-10 flex justify-between'>
         {/* Showing all [numberOf] results */}

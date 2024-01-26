@@ -3,6 +3,8 @@ import { ProductCard } from '../components';
 import { useEffect, useState } from 'react';
 import { getPopularProducts } from '../api/getProducts';
 import { ProductType } from '../types/AppTypes';
+import { Link } from 'react-router-dom';
+import { frontUrl, productsRoute } from '../config/constants';
 
 export const Homepage = () => {
 
@@ -24,7 +26,9 @@ export const Homepage = () => {
         {/* Image display section */}
         <section className='relative flex max-h-[calc(100vh-72px)] overflow-hidden items-center justify-center'>
           <img className='md:mb-20' src="bg-shoes.jpg" alt="" />
-          <button className='bottom-[5vh] w-[200px] h-14 bg-[#000] text-white absolute z-10 md:bottom-[10vh] xl:bottom-[5vh] hover:bg-[#FFF] hover:text-[#000] transition-all duration-200 font-roboto tracking-[.35em] uppercase'>Shop now</button>
+          <button className='bottom-[5vh] w-[200px] h-14 bg-[#000] text-white absolute z-10 md:bottom-[10vh] xl:bottom-[5vh] hover:bg-[#FFF] hover:text-[#000] transition-all duration-200 font-roboto tracking-[.35em] uppercase'>
+            <Link to={frontUrl + productsRoute}>Shop now</Link>
+          </button>
         </section>
 
         {/* Products */}
