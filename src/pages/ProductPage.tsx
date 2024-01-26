@@ -3,15 +3,32 @@ import { hardcodedProducts } from '../data';
 
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SizeButton } from "../components";
+import { useParams } from "react-router-dom";
+import { ProductType } from "../types/AppTypes";
+import { getProductById } from "../api/getProducts";
 
 export const ProductPage = () => {
 
-  const prod = hardcodedProducts[0];
-
-  const [sizeSelected, setSizeSelected] = useState<number | undefined>(40);
+  let { productId } = useParams();
+  
+  const [product, setProduct] = useState<ProductType>();
+  const [sizeSelected, setSizeSelected] = useState<number | undefined>();
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    const fetchProduct = async() => {
+      if (!productId) return;
+      const response = await getProductById(productId);
+      console.log(response.data);
+      setProduct(response.data);
+    }
+    fetchProduct();
+  }, [productId]);
+  
+
+  // const prod = hardcodedProducts[0];
 
   const handleQuantityChange = (e: React.FormEvent<HTMLInputElement>) => {
     const number = parseInt(e.currentTarget.value);
@@ -30,7 +47,7 @@ export const ProductPage = () => {
             <Zoom>
                 <img
                   alt="That Wanaka Tree, New Zealand by Laura Smetsers"
-                  src={prod.fullImgSource}
+                  src={product?.imgSource}
                   width="500"
                 />
             </Zoom>
@@ -44,14 +61,14 @@ export const ProductPage = () => {
           </li>
           {/* Shoes description */}
           <li className="mt-3">
-            Step into iconic style with Nike's Air Jordan shoes. Born from the legendary collaboration with Michael Jordan in 1985, these sneakers seamlessly blend cutting-edge tech with bold designs for on-court performance and off-court flair. With the iconic Jumpman logo and distinctive silhouettes, Air Jordans symbolize excellence and individuality, making a statement in both sports and style.
+            {product?.description}
           </li>
           {/* Sizes container */}
           <li className="mt-3">
             <div className="max-w-[230px] grid grid-cols-5 grid-rows-2 gap-2">
               {
-                prod.sizes.map( size => (
-                  <SizeButton size={size} sizeSelected={sizeSelected} setSizeSelected={setSizeSelected}/>
+                product?.sizes.map( size => (
+                  <SizeButton key={size.size} size={size} sizeSelected={sizeSelected} setSizeSelected={setSizeSelected}/>
                 ))
               }
             </div>
@@ -61,7 +78,7 @@ export const ProductPage = () => {
             <div className="flex gap-5 items-center">
               {/* Price */}
               <div className="text-[26px] text-green font-semibold tracking-tighter">
-                ${prod.price}
+                ${product?.price}
               </div>
               {/* Quantity */}
               <div className="w-[80px] h-[30px] px-1 flex justify-around items-center text-lg border-[1px] border-green">

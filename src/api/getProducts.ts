@@ -33,3 +33,10 @@ export const getCategoryProducts = async({ page = 1, limit = 40, sortBy = "popul
   const response = await axios.get(url.href);
   return response;
 }
+
+export const getProductById = async(id: string) => {
+  const url = new URL("/api/products/single/" + id, baseUrl);
+
+  const response = await axios.get(url.href);
+  return response;
+}
