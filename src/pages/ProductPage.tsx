@@ -100,7 +100,7 @@ export const ProductPage = () => {
               </div>
             </div>
             {/* Add to cart button */}
-            <button className="max-w-[350px] h-[42px] w-full mt-1 flex items-center justify-center gap-2 bg-green text-white rounded-[4px] text-[20px]">
+            <button className="max-w-[350px] h-[42px] w-full mt-1 flex items-center justify-center gap-2 bg-green text-white rounded-[4px] text-[20px] hover:bg-[#458f66] transition-all">
               <span>
                 <img className="invert-[100%]" src="/images/icon-cart.svg" alt="" />
               </span> 
