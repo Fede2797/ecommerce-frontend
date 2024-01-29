@@ -27,10 +27,11 @@ export const Categories = () => {
                 key={category.name}
               >
                 <li 
-                  className={`w-[200px] h-[240px] flex flex-col justify-center text-center overflow-hidden  text-white text-lg font-semibold tracking-wider cursor-pointer select-none ${category.name === "Kids" ? "bg-cover bg-no-repeat bg-left" : ""}`} 
+                  className={`relative group w-[200px] h-[240px] flex flex-col justify-center text-center overflow-hidden  text-white text-lg font-semibold tracking-wider cursor-pointer select-none ${category.name === "Kids" ? "bg-cover bg-no-repeat bg-left" : ""}`} 
                   style={{backgroundImage: category.imgSource}}
                 >
-                  <span className='drop-shadow-[0_0px_10px_rgba(0,0,0,.9)]'>
+                  <div className='absolute w-[200px] h-[240px] left-0 top-0 bg-[#000] bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-20'></div>
+                  <span className='drop-shadow-[0px_0px_10px_rgba(0,0,0,.9)] group-hover:scale-125 transition-all duration-300'>
                     {/* This string is built like this to capitalize the first letter of the category*/}
                     {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
                   </span>

@@ -3,6 +3,7 @@ export const productsRoute = "products";
 export const womenRoute = "products/women";
 export const menRoute = "products/men";
 export const kidsRoute = "products/kids";
+export const singleProductRoute = "product/"
 
 export const options =[
   { value: 'popularity', label: 'Popularity' },
