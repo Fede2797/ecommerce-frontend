@@ -1,7 +1,25 @@
 import { Link } from "react-router-dom";
 import { frontUrl, kidsRoute, menRoute, womenRoute } from "../config/constants";
+import { useAppContext } from "../AppProvider";
+import { CartProduct } from "../types/AppTypes";
+import { useEffect, useState } from "react";
+
+const countProducts = ( cart: CartProduct[] ) => {
+  const initialValue = 0;
+  const count = cart.reduce( (acum, current) => acum + current.quantity, initialValue);
+  return count;
+}
 
 export const Navbar = () => {
+
+  const { state } = useAppContext();
+  const [productQuantity, setproductQuantity] = useState(0);
+
+  useEffect(() => {
+    setproductQuantity( countProducts( state ) );
+  }, [state])
+  
+
   return (
     <div className="w-full bg-white border-b-[1px] border-gray-200">
       <div className="w-full max-w-[1200px] min-h-[72px] mx-auto flex items-center justify-between">
@@ -31,7 +49,13 @@ export const Navbar = () => {
         </ul>
         {/* Right side navbar */}
         <div className="p-4">
-          <figure className="w-[40px] h-[40px] flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
+          <figure className="relative w-[40px] h-[40px] flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
+            
+            <div className={`absolute right-1 top-1 w-4 h-4 items-center justify-center bg-green rounded-full text-white text-center font-medium text-xs ${ productQuantity > 0 ? "flex" : "hidden"}`}>
+              <span>
+                { productQuantity }
+              </span>
+            </div>
             <img src="/images/icon-cart.svg" alt="" />
           </figure>
         </div>

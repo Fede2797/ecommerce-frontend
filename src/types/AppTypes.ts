@@ -20,3 +20,12 @@ export interface SyzeType {
   size: number, 
   available: boolean
 };
+
+export interface CartProduct {
+  _id: string,
+  name: string,
+  price: number,
+  size: number,
+  imgSource: string,
+  quantity: number,
+};

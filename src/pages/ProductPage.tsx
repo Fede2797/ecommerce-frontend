@@ -7,12 +7,19 @@ import { SizeButton } from "../components";
 import { useParams } from "react-router-dom";
 import { ProductType } from "../types/AppTypes";
 import { getProductById } from "../api/getProducts";
+import { useAppContext } from "../AppProvider";
+import { ToastContainer, toast } from "react-toastify";
+import { productReducer } from "../config/constants";
+
+const notifySucces = () => toast.success("Product added to the cart");
 
 export const ProductPage = () => {
 
   let { productId } = useParams();
+  const { dispatch } = useAppContext();
   
   const [product, setProduct] = useState<ProductType>();
+  const [validations, setValidations] = useState<String[]>([]);
   const [sizeSelected, setSizeSelected] = useState<number | undefined>();
   const [quantity, setQuantity] = useState(1);
 
@@ -20,7 +27,6 @@ export const ProductPage = () => {
     const fetchProduct = async() => {
       if (!productId) return;
       const response = await getProductById(productId);
-      console.log(response.data);
       setProduct(response.data);
     }
     fetchProduct();
@@ -31,6 +37,37 @@ export const ProductPage = () => {
     if ( isNaN(number) || number === 0) return;
 
     setQuantity(number);
+  }
+
+  const handleAddToCart = () => {
+    // Validate the product exists and a size is selected
+    if (!product || !sizeSelected) {
+      if (!sizeSelected) {
+        const newValidations = [...validations];
+        newValidations.push("*Remember to pick a size");
+        setValidations(newValidations);
+      }
+      return;
+    }
+
+    // Reset warning validations
+    setValidations([]);
+
+    // Dispatch action to add product to the cart
+    dispatch({
+      type: productReducer.ADD_PRODUCT,
+      value: {
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        size: sizeSelected,
+        imgSource: product._id,
+        quantity: quantity,
+      }
+    });
+
+    // Notification
+    notifySucces();
   }
 
   return (
@@ -100,15 +137,26 @@ export const ProductPage = () => {
               </div>
             </div>
             {/* Add to cart button */}
-            <button className="max-w-[350px] h-[42px] w-full mt-1 flex items-center justify-center gap-2 bg-green text-white rounded-[4px] text-[20px] hover:bg-[#458f66] transition-all">
+            <button 
+              className="max-w-[350px] h-[42px] w-full mt-1 flex items-center justify-center gap-2 bg-green text-white rounded-[4px] text-[20px] hover:bg-[#458f66] transition-all"
+              onClick={handleAddToCart}
+            >
               <span>
                 <img className="invert-[100%]" src="/images/icon-cart.svg" alt="" />
               </span> 
               + Add to cart
             </button>
+            {
+              validations.map( (validation, index) => (
+                <span key={index} className={`text-red-500`}>
+                  {validation}
+                </span>
+              ))
+            }
           </li>
         </ul>
       </section>
+      <ToastContainer />
     </Layout>
   )
 }
