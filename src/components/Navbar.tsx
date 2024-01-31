@@ -32,19 +32,25 @@ export const Navbar = () => {
         {/* Middle navbar */}
         <ul className="w-full max-w-[400px] p-4 gap-10 flex justify-between font-roboto">
           <Link to={frontUrl + womenRoute}>
-            <li className="px-5 py-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
-              Women
-            </li>
+            <div className="px-4">
+              <li className="my-2 flex items-center justify-center rounded-full cursor-pointer hover-underline-animation">
+                Women
+              </li>
+            </div>
           </Link>
           <Link to={frontUrl + menRoute}>
-            <li className="px-5 py-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
-              Men
-            </li>
+            <div className="px-4">
+              <li className="my-2 flex items-center justify-center rounded-full cursor-pointer hover-underline-animation">
+                Men
+              </li>
+            </div>
           </Link>
           <Link to={frontUrl + kidsRoute}>
-            <li className="px-5 py-2 flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
-              Kids
-            </li>
+            <div className="px-4">
+              <li className="my-2 flex items-center justify-center rounded-full cursor-pointer hover-underline-animation">
+                Kids
+              </li>
+            </div>
           </Link>
         </ul>
         {/* Right side navbar */}

@@ -61,7 +61,7 @@ export const ProductPage = () => {
         name: product.name,
         price: product.price,
         size: sizeSelected,
-        imgSource: product._id,
+        imgSource: product.imgSource,
         quantity: quantity,
       }
     });
