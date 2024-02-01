@@ -156,7 +156,7 @@ export const ProductPage = () => {
           </li>
         </ul>
       </section>
-      <ToastContainer />
+      <ToastContainer position="bottom-right" />
     </Layout>
   )
 }

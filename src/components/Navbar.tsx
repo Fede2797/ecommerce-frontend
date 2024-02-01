@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { frontUrl, kidsRoute, menRoute, womenRoute } from "../config/constants";
+import { cartRoute, frontUrl, kidsRoute, menRoute, womenRoute } from "../config/constants";
 import { useAppContext } from "../AppProvider";
 import { CartProduct } from "../types/AppTypes";
 import { useEffect, useState } from "react";
@@ -55,15 +55,17 @@ export const Navbar = () => {
         </ul>
         {/* Right side navbar */}
         <div className="p-4">
-          <figure className="relative w-[40px] h-[40px] flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
-            
-            <div className={`absolute right-1 top-1 w-4 h-4 items-center justify-center bg-green rounded-full text-white text-center font-medium text-xs ${ productQuantity > 0 ? "flex" : "hidden"}`}>
-              <span>
-                { productQuantity }
-              </span>
-            </div>
-            <img src="/images/icon-cart.svg" alt="" />
-          </figure>
+          <Link to={frontUrl + cartRoute}>
+            <figure className="relative w-[40px] h-[40px] flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
+              {/* Circle displaying the amount of products in the cart */}
+              <div className={`absolute right-1 top-1 w-4 h-4 items-center justify-center bg-green rounded-full text-white text-center font-medium text-xs ${ productQuantity > 0 ? "flex" : "hidden"}`}>
+                <span>
+                  { productQuantity }
+                </span>
+              </div>
+              <img src="/images/icon-cart.svg" alt="" />
+            </figure>
+          </Link>
         </div>
       </div>
     </div>

@@ -4,11 +4,12 @@ export const womenRoute = "products/women";
 export const menRoute = "products/men";
 export const kidsRoute = "products/kids";
 export const singleProductRoute = "product/";
+export const cartRoute = "cart";
 
 export enum productReducer {
   ADD_PRODUCT = "ADD_PRODUCT",
   REMOVE_PRODUCT = "REMOVE_PRODUCT",
-  ADD_QUANTITY = "ADD_QUANTITY",
+  CHANGE_QUANTITY = "ADD_QUANTITY",
   SUBSTRACT_QUANTITY = "SUBSTRACT_QUANTITY",
 }
 
