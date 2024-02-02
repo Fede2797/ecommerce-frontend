@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Layout } from '../layout/Layout'
-import { frontUrl, productReducer, productsRoute, singleProductRoute } from '../config/constants'
+import { checkoutRoute, frontUrl, productReducer, productsRoute, singleProductRoute } from '../config/constants';
 import { useAppContext } from '../AppProvider'
 import { CartProduct } from '../types/AppTypes'
 import { useEffect, useState } from 'react'
@@ -162,12 +162,14 @@ export const CartPage = () => {
               <span className='mt-2 text-md text-[#9E9E9E] font-roboto font-normal'>Tax and shipping cost will be calculated later</span>
             </div>
             {/* Checkout button */}
-            <button 
-              className={`w-full h-10 max-w-[180px] text-white rounded-[4px] text-xl ${noProductsInCart ? "bg-gray-400" : "bg-green"}`}
-              disabled={noProductsInCart}
-            >
-              Check-out
-            </button>
+            <Link to={frontUrl + checkoutRoute} className='w-full max-w-[223px]'>
+              <button 
+                className={`w-full h-10 text-white rounded-[4px] text-xl ${noProductsInCart ? "bg-gray-400" : "bg-green"}`}
+                disabled={noProductsInCart}
+              >
+                Check-out
+              </button>
+            </Link>
           </div>
         </div>
       </section>
