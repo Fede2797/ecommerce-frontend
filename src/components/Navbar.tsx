@@ -25,7 +25,7 @@ export const Navbar = () => {
       <div className="w-full max-w-[1200px] min-h-[72px] mx-auto flex items-center justify-between">
         {/* Left side navbar */}
         <Link to={frontUrl}>
-          <div className="p-4 font-bold cursor-pointer">
+          <div className="p-4 font-bold cursor-pointer tracking-[-0.5px]">
             Urbaneer
           </div>
         </Link>
