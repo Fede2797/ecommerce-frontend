@@ -28,7 +28,7 @@ export const breadcrumbs = [
   "Payment"
 ]
 
-export const breadcrumbsObj = [
+export const checkoutBreadcrumbs = [
   { name: "Details", route: frontUrl + checkoutRoute },
   { name: "Shipping", route: frontUrl + shippingRoute },
   { name: "Payment", route: frontUrl + paymentRoute },

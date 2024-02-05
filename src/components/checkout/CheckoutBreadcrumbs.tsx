@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import { breadcrumbs, breadcrumbsObj, cartRoute, checkoutSection, frontUrl } from '../../config/constants'
+import { checkoutBreadcrumbs, cartRoute, checkoutSection, frontUrl } from '../../config/constants'
 import { Link } from 'react-router-dom';
 
 export const CheckoutBreadcrumbs = ({section}: {section: string}) => {
 
   const [sectionPosition, setSectionPosition] = useState(0);
 
-  
   useEffect(() => {
     switch (section) {
       case checkoutSection.DETAILS:
@@ -33,7 +32,7 @@ export const CheckoutBreadcrumbs = ({section}: {section: string}) => {
       </li>
       <img className="h-[10px]" src="/chevron-right.svg" alt="" />
       {
-        breadcrumbsObj.map( (item, index) => (
+        checkoutBreadcrumbs.map( (item, index) => (
           <>
             <li 
               className={`${index < sectionPosition ? "text-green" : "text-[#616161]" } ${sectionPosition === index ? "text-[#000] semibold" : ""}`}
