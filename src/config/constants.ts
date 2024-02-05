@@ -6,6 +6,8 @@ export const kidsRoute = "products/kids";
 export const singleProductRoute = "product/";
 export const cartRoute = "cart";
 export const checkoutRoute = "cart/checkout";
+export const shippingRoute = "cart/checkout/shipping";
+export const paymentRoute = "cart/checkout/payment";
 
 
 export enum productReducer {
