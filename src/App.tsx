@@ -20,6 +20,7 @@ function App() {
           <Route path="/cart/checkout"          Component={() => <CheckOutPage section={checkoutSection.DETAILS} />} />
           <Route path="/cart/checkout/shipping" Component={() => <CheckOutPage section={checkoutSection.SHIPPING} />} />
           <Route path="/cart/checkout/payment"  Component={() => <CheckOutPage section={checkoutSection.PAYMENT} />} />
+          <Route path="/cart/checkout/payment/confirm"  Component={() => <CheckOutPage section={checkoutSection.CONFIRM} />} />
           <Route path="/products"               Component={ProductListPage} />
           <Route path="/products/men"           Component={() => (<CategoryPage category="men" />)} />
           <Route path="/products/women"         Component={() => (<CategoryPage category="women" />)} />

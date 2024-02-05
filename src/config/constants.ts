@@ -8,6 +8,7 @@ export const cartRoute = "cart";
 export const checkoutRoute = "cart/checkout";
 export const shippingRoute = "cart/checkout/shipping";
 export const paymentRoute = "cart/checkout/payment";
+export const checkPaymentRoute = "cart/checkout/payment/confirm";
 
 export enum productReducer {
   ADD_PRODUCT = "ADD_PRODUCT",
@@ -20,6 +21,7 @@ export enum checkoutSection {
   DETAILS = "DETAILS",
   SHIPPING = "SHIPPING",
   PAYMENT = "PAYMENT",
+  CONFIRM = "CONFIRM"
 }
 
 export const breadcrumbs = [
