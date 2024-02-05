@@ -24,10 +24,10 @@ export enum checkoutSection {
   CONFIRM = "CONFIRM"
 }
 
-export const breadcrumbs = [
-  "Details",
-  "Shipping",
-  "Payment"
+export const checkoutButtons = [
+  { id: checkoutSection.DETAILS, backButtonName: "Back to cart", backButtonRoute: frontUrl + cartRoute, forwardButtonName: "Go to shipping", forwardButtonRoute: frontUrl + shippingRoute},
+  { id: checkoutSection.DETAILS, backButtonName: "Back to details", backButtonRoute: frontUrl + checkoutRoute, forwardButtonName: "Go to payment", forwardButtonRoute: frontUrl + paymentRoute},
+  { id: checkoutSection.DETAILS, backButtonName: "Back to shipping", backButtonRoute: frontUrl + shippingRoute, forwardButtonName: "Pay now", forwardButtonRoute: frontUrl + checkPaymentRoute}
 ]
 
 export const checkoutBreadcrumbs = [

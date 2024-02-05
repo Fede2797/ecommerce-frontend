@@ -23,19 +23,25 @@ export const CheckOutPage = ({section}: {section: string}) => {
         return (
           <>
             <Details />
-            <CheckoutButtonsNavigation />
+            <CheckoutButtonsNavigation section={section}/>
           </>)
       case checkoutSection.SHIPPING:
         return (
           <>
             <Shipping />
-            <CheckoutButtonsNavigation />
+            <CheckoutButtonsNavigation section={section}/>
           </>)
       case checkoutSection.PAYMENT:
         return (
           <>
             {/* <Payment /> */}
-            <CheckoutButtonsNavigation />
+            <CheckoutButtonsNavigation section={section}/>
+          </>)
+      case checkoutSection.CONFIRM:
+        return (
+          <>
+            {/* <Confirm /> */}
+            <CheckoutButtonsNavigation section={section}/>
           </>)
       default:
         return <></>

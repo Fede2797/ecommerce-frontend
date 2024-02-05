@@ -1,19 +1,48 @@
-import { cartRoute, checkoutRoute, frontUrl, shippingRoute } from '../../config/constants'
+import { useEffect, useState } from 'react';
+import { cartRoute, checkoutButtons, checkoutSection, frontUrl, shippingRoute } from '../../config/constants'
 import { Link } from 'react-router-dom'
 
-export const CheckoutButtonsNavigation = () => {
+interface ButtonsType {
+   id: string, 
+   backButtonName: string, 
+   backButtonRoute: string, 
+   forwardButtonName: string, 
+   forwardButtonRoute: string
+}
+
+export const CheckoutButtonsNavigation = ({section}: {section: string}) => {
+
+  const [buttons, setButtons] = useState<ButtonsType>();
+
+  useEffect(() => {
+    switch (section) {
+      case checkoutSection.DETAILS:
+        setButtons(checkoutButtons[0]);
+        break;
+      case checkoutSection.SHIPPING:
+        setButtons(checkoutButtons[1]);
+        break;
+      case checkoutSection.PAYMENT:
+        setButtons(checkoutButtons[2]);
+        break;
+      default:
+        setButtons(checkoutButtons[0]);
+        break;
+    }
+  }, [section])
+
   return (
     <nav className="mt-[60px] flex text-lg items-center">
       <div className="w-full">
-        <Link to={frontUrl + cartRoute}>
+        <Link to={buttons ? buttons.backButtonRoute : "#"}>
           <span className="text-md underline text-green cursor-pointer">
-            Back to cart
+            {buttons?.backButtonName}
           </span>
         </Link>
       </div>
-      <Link className='w-full flex items-center justify-center font-medium text-white bg-green h-10 rounded-[4px]' to={frontUrl + shippingRoute}>
+      <Link className='w-full flex items-center justify-center font-medium text-white bg-green h-10 rounded-[4px]' to={buttons ? buttons.forwardButtonRoute : "#"}>
         <span>
-          Go to shipping
+          {buttons?.forwardButtonName}
         </span>
       </Link>
     </nav>
