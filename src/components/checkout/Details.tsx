@@ -12,8 +12,6 @@ export const Details = () => {
           id="contact" 
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
           placeholder="Email or mobile phone number"
-          // value={productName}
-          // onChange={handleTargetChange}
         />
       </div>
       {/* Shipping Address */}
@@ -26,8 +24,6 @@ export const Details = () => {
             id="first_name" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
             placeholder="Name"
-            // value={productName}
-            // onChange={handleTargetChange}
           />
           {/* Last name input */}
           <input 
@@ -35,8 +31,6 @@ export const Details = () => {
             id="last_name" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
             placeholder="Last Name"
-            // value={productName}
-            // onChange={handleTargetChange}
           />
         </div>
         {/* Address and number */}
@@ -45,8 +39,6 @@ export const Details = () => {
           id="address" 
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
           placeholder="Address and number"
-          // value={productName}
-          // onChange={handleTargetChange}
         />
         {/* Shipping note */}
         <input 
@@ -54,8 +46,6 @@ export const Details = () => {
           id="note" 
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
           placeholder="Shipping note"
-          // value={productName}
-          // onChange={handleTargetChange}
         />
         <div className="flex gap-3">
           {/* City */}
@@ -64,8 +54,6 @@ export const Details = () => {
             id="city" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
             placeholder="Name"
-            // value={productName}
-            // onChange={handleTargetChange}
           />
           {/* Zip Code */}
           <input 
@@ -73,15 +61,11 @@ export const Details = () => {
             id="zipcode" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
             placeholder="Zip code"
-            // value={productName}
-            // onChange={handleTargetChange}
           />
         </div>
         <select 
           id="order" 
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
-          // value={orderBy}
-          // onChange={handleChange}
         >
           {
             provincias.map( option => 
