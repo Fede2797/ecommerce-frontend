@@ -48,7 +48,7 @@ export const CheckOutPage = ({section}: {section: string}) => {
       <section className="w-full mr-[120px] flex flex-col items-end">
         <article className="w-full max-w-[445px]">
           <CheckoutLogo />
-          <CheckoutBreadcrumbs />
+          <CheckoutBreadcrumbs section={section} />
           <h1 className="mb-4 text-md text-red-500">* All fields are designed for display only. None of them are mandatory</h1>
           
           {sectionRender()}

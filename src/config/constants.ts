@@ -9,7 +9,6 @@ export const checkoutRoute = "cart/checkout";
 export const shippingRoute = "cart/checkout/shipping";
 export const paymentRoute = "cart/checkout/payment";
 
-
 export enum productReducer {
   ADD_PRODUCT = "ADD_PRODUCT",
   REMOVE_PRODUCT = "REMOVE_PRODUCT",
@@ -21,8 +20,19 @@ export enum checkoutSection {
   DETAILS = "DETAILS",
   SHIPPING = "SHIPPING",
   PAYMENT = "PAYMENT",
-  
 }
+
+export const breadcrumbs = [
+  "Details",
+  "Shipping",
+  "Payment"
+]
+
+export const breadcrumbsObj = [
+  { name: "Details", route: frontUrl + checkoutRoute },
+  { name: "Shipping", route: frontUrl + shippingRoute },
+  { name: "Payment", route: frontUrl + paymentRoute },
+]
 
 export const options =[
   { value: 'popularity', label: 'Popularity' },
