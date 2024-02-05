@@ -17,6 +17,31 @@ export const CheckOutPage = ({section}: {section: string}) => {
     (accumulator: number, product: CartProduct) => accumulator + product.price * product.quantity, 0
   );
 
+  const sectionRender = () => {
+    switch(section) {
+      case checkoutSection.DETAILS:
+        return (
+          <>
+            <Details />
+            <CheckoutButtonsNavigation />
+          </>)
+      case checkoutSection.SHIPPING:
+        return (
+          <>
+            <Shipping />
+            <CheckoutButtonsNavigation />
+          </>)
+      case checkoutSection.PAYMENT:
+        return (
+          <>
+            {/* <Payment /> */}
+            <CheckoutButtonsNavigation />
+          </>)
+      default:
+        return <></>
+    }
+  }
+
   return (
     <div className="min-h-[100vh] flex font-roboto tracking-[-0.9px]">
       {/* Left section */}
@@ -24,16 +49,9 @@ export const CheckOutPage = ({section}: {section: string}) => {
         <article className="w-full max-w-[445px]">
           <CheckoutLogo />
           <CheckoutBreadcrumbs />
-          {
-            section === checkoutSection.DETAILS && <Details />
-          }
-          {
-            section === checkoutSection.SHIPPING && <Shipping />
-          }
-          {
-            // section === checkoutSection.PAYMENT && <Payment />
-          }
-          <CheckoutButtonsNavigation />
+          <h1 className="mb-4 text-md text-red-500">* All fields are designed for display only. None of them are mandatory</h1>
+          
+          {sectionRender()}
         </article>
       </section>
       {/* Right section */}
