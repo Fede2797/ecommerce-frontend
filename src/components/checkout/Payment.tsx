@@ -1,8 +1,9 @@
-import { useState } from "react";
 
 export const Payment = () => {
 
-  const [billingAddress, setBillingAddress] = useState();
+  // TODO: Finish "Billing address section"
+  // const [billingAddress, setBillingAddress] = useState();
+
 
   return (
     <>
@@ -73,7 +74,7 @@ export const Payment = () => {
             </div>
           </div>
       </div>
-      <div className="mt-10">
+      {/* <div className="mt-10">
         <h1 className="font-medium">Billing Address</h1>
       </div>
       <div className="flex flex-col gap-3">
@@ -104,7 +105,7 @@ export const Payment = () => {
               <label htmlFor="helper-radio2" className="font text-gray-900">Use a different address for billing</label>
           </div>
         </label>
-      </div>
+      </div> */}
     </>
   )
 }
