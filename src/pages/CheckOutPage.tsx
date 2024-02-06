@@ -6,7 +6,9 @@ import { CheckoutBreadcrumbs,
   CheckoutLogo,
   CheckoutProductCard,
   CheckoutTotalDetails,
+  Confirm, 
   Details,
+  Payment,
   Shipping } from "../components/checkout";
 
 export const CheckOutPage = ({section}: {section: string}) => {
@@ -20,29 +22,13 @@ export const CheckOutPage = ({section}: {section: string}) => {
   const sectionRender = () => {
     switch(section) {
       case checkoutSection.DETAILS:
-        return (
-          <>
-            <Details />
-            <CheckoutButtonsNavigation section={section}/>
-          </>)
+        return ( <Details /> )
       case checkoutSection.SHIPPING:
-        return (
-          <>
-            <Shipping />
-            <CheckoutButtonsNavigation section={section}/>
-          </>)
+        return ( <Shipping /> )
       case checkoutSection.PAYMENT:
-        return (
-          <>
-            {/* <Payment /> */}
-            <CheckoutButtonsNavigation section={section}/>
-          </>)
+        return ( <Payment /> )
       case checkoutSection.CONFIRM:
-        return (
-          <>
-            {/* <Confirm /> */}
-            <CheckoutButtonsNavigation section={section}/>
-          </>)
+        return ( <Confirm /> )
       default:
         return <></>
     }
@@ -52,12 +38,14 @@ export const CheckOutPage = ({section}: {section: string}) => {
     <div className="min-h-[100vh] flex font-roboto tracking-[-0.9px]">
       {/* Left section */}
       <section className="w-full mr-[120px] flex flex-col items-end">
-        <article className="w-full max-w-[445px]">
-          <CheckoutLogo />
-          <CheckoutBreadcrumbs section={section} />
-          <h1 className="mb-4 text-md text-red-500">* All fields are designed for display only. None of them are mandatory</h1>
-          
-          {sectionRender()}
+        <article className="pb-10 flex flex-col justify-between h-full w-full max-w-[445px]">
+          <div>
+            <CheckoutLogo />
+            <CheckoutBreadcrumbs section={section} />
+            <h1 className="mb-4 text-md text-red-500">* All fields are designed for display only. None of them are mandatory</h1>
+            {sectionRender()}
+          </div>
+          <CheckoutButtonsNavigation section={section}/>
         </article>
       </section>
       {/* Right section */}
@@ -70,7 +58,7 @@ export const CheckOutPage = ({section}: {section: string}) => {
             ))
           }
         </div>
-        <CheckoutTotalDetails subTotal={subTotal} />
+        <CheckoutTotalDetails section={section} subTotal={subTotal} />
       </section>
     </div>
   )
