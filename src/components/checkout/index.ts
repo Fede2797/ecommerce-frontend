@@ -6,3 +6,5 @@ export { CheckoutProductCard } from "./CheckoutProductCard";
 export { CheckoutTotalDetails } from "./CheckoutTotalDetails";
 export { Details } from "./Details";
 export { Shipping } from "./Shipping";
+export { Payment } from "./Payment";
+export { Confirm } from "./Confirm";
