@@ -1,5 +1,6 @@
+import { checkoutSection } from "../../config/constants"
 
-export const CheckoutTotalDetails = ({subTotal}: {subTotal: number}) => {
+export const CheckoutTotalDetails = ({section, subTotal}: {section: string, subTotal: number}) => {
   return (
     <>
       <div className="w-full max-w-[410px] mb-4 pb-8 flex flex-col gap-3 border-b-[1px] font-roboto text-[14px]">
@@ -16,7 +17,7 @@ export const CheckoutTotalDetails = ({subTotal}: {subTotal: number}) => {
             Shipping
           </span>
           <span>
-            Calculated at the next step
+            { section === checkoutSection.DETAILS ? "Calculated at the next step" : "Free shipping"}
           </span>
         </div>
       </div>
