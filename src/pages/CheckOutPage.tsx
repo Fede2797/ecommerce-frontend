@@ -42,7 +42,7 @@ export const CheckOutPage = ({section}: {section: string}) => {
           <div>
             <CheckoutLogo />
             <CheckoutBreadcrumbs section={section} />
-            <h1 className="mb-4 text-md text-red-500">* All fields are designed for display only. None of them are mandatory</h1>
+            <h1 className={`mb-4 text-md text-red-500 ${section === checkoutSection.CONFIRM ? "hidden" : ""}`}>* All fields are designed for display only. None of them are mandatory</h1>
             {sectionRender()}
           </div>
           <CheckoutButtonsNavigation section={section}/>
