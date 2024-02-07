@@ -33,7 +33,7 @@ export const CheckoutBreadcrumbs = ({section}: {section: string}) => {
       <img className="h-[10px]" src="/chevron-right.svg" alt="" />
       {
         checkoutBreadcrumbs.map( (item, index) => (
-          <>
+          <div key={index}>
             <li 
               className={`${index < sectionPosition ? "text-green" : "text-[#616161]" } ${sectionPosition === index ? "text-[#000] semibold" : ""}`}
             >
@@ -42,7 +42,7 @@ export const CheckoutBreadcrumbs = ({section}: {section: string}) => {
               </Link>
             </li>
             <img className="h-[10px]" src="/chevron-right.svg" alt="" />
-          </>
+          </div>
         ))
       }
     </ul>
