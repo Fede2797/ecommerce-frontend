@@ -58,8 +58,6 @@ export const UploadPage = () => {
       category &&
       sizes &&
       selectedImage) ) {
-
-      console.log("At least one field is missing");
       return;
     }
 

@@ -22,8 +22,6 @@ export const CartPage = () => {
       (accumulator: number, product: CartProduct) => accumulator + product.price * product.quantity, 0
     );
 
-    console.log({total});
-
     setTotalPrice(total);
     setNoProductsInCart(false);
   }, [state])
