@@ -17,6 +17,8 @@ const reducer = (state: CartProduct[], action: {type: string, value: CartProduct
       return removeItemFromCart(action.value, state);
     case productReducer.CHANGE_QUANTITY:
       return changeItemQuantity(action.value, state);
+    case productReducer.EMPTY_CART:
+      return [];
   }
   return state;
 }

@@ -15,6 +15,7 @@ export enum productReducer {
   REMOVE_PRODUCT = "REMOVE_PRODUCT",
   CHANGE_QUANTITY = "ADD_QUANTITY",
   SUBSTRACT_QUANTITY = "SUBSTRACT_QUANTITY",
+  EMPTY_CART = "EMPTY_CART",
 }
 
 export enum checkoutSection {
