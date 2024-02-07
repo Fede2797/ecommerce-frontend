@@ -81,6 +81,7 @@ export const Payment = () => {
         <label htmlFor="helper-radio1" className="mt-6 flex items-center ps-4 p-3 border border-gray-200 rounded">
           <div className="flex items-center h-5">
               <input 
+                readOnly
                 checked 
                 name="billing" 
                 id="helper-radio1" 
