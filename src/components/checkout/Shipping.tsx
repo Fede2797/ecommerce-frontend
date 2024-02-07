@@ -21,7 +21,7 @@ export const Shipping = () => {
         <h1 className="font-medium">Shipping method</h1>
         <label htmlFor="helper-radio" className="mt-6 flex items-center ps-4 p-3 border border-gray-200 rounded">
           <div className="flex items-center h-5">
-              <input checked id="helper-radio" aria-describedby="helper-radio-text" type="radio" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
+              <input readOnly checked id="helper-radio" aria-describedby="helper-radio-text" type="radio" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" />
           </div>
           <div className="ms-2 text-sm">
               <label htmlFor="helper-radio" className="font-medium text-gray-900">Standard Shipping</label>
