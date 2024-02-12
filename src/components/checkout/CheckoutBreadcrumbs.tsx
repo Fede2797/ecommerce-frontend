@@ -17,6 +17,9 @@ export const CheckoutBreadcrumbs = ({section}: {section: string}) => {
       case checkoutSection.PAYMENT:
         setSectionPosition(2);
         break;
+      case checkoutSection.CONFIRM:
+        setSectionPosition(3);
+        break;
       default:
         setSectionPosition(0);
         break;
@@ -26,18 +29,21 @@ export const CheckoutBreadcrumbs = ({section}: {section: string}) => {
   return (
     <ul className="mb-4 flex items-center gap-3 font-medium">
       <li className='text-green'>
-        <Link to={ frontUrl + cartRoute }>
+        <Link to={ sectionPosition !== 3 ? frontUrl + cartRoute : "#" }>
           Cart
         </Link>
       </li>
       <img className="h-[10px]" src="/chevron-right.svg" alt="" />
       {
         checkoutBreadcrumbs.map( (item, index) => (
-          <div key={index}>
+          <div className='flex gap-3 items-center' key={index}>
             <li 
               className={`${index < sectionPosition ? "text-green" : "text-[#616161]" } ${sectionPosition === index ? "text-[#000] semibold" : ""}`}
             >
-              <Link className={`${index <= sectionPosition ? "cursor-pointer" : "cursor-default"}`} to={index < sectionPosition ? item.route : "#"}>
+              <Link 
+                className={`${index <= sectionPosition ? "cursor-pointer" : "cursor-default"}`} 
+                to={(index > sectionPosition || sectionPosition !== 3) ? item.route : "#"}
+              >
                 {item.name}
               </Link>
             </li>
