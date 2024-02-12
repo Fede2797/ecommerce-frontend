@@ -160,14 +160,16 @@ export const CartPage = () => {
               <span className='mt-2 text-md text-[#9E9E9E] font-roboto font-normal'>Tax and shipping cost will be calculated later</span>
             </div>
             {/* Checkout button */}
-            <Link to={frontUrl + checkoutRoute} className='w-full max-w-[223px]'>
-              <button 
-                className={`w-full h-10 text-white rounded-[4px] text-xl ${noProductsInCart ? "bg-gray-400" : "bg-green"}`}
-                disabled={noProductsInCart}
-              >
-                Check-out
-              </button>
-            </Link>
+            <div className='w-full max-w-[223px]'>
+              <Link to={frontUrl + checkoutRoute}>
+                <button 
+                  className={`w-full h-10 text-white rounded-[4px] text-xl ${noProductsInCart ? "bg-gray-400" : "bg-green"}`}
+                  disabled={noProductsInCart}
+                >
+                  Check-out
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
