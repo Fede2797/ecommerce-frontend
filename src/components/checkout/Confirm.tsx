@@ -18,7 +18,7 @@ export const Confirm = () => {
       <h1 className="mt-4 text-[26px] font-medium text-center">Payment confirmed</h1>
       <p className="text-center text-[#818181] font-normal"> Thank you for buying Urbaneer. Now that your order is confirmed it will be ready to ship in 2 days. Please check your inbox in the future for your order updates.</p>
       <Link className="w-full max-w-[250px] mx-auto mt-10 flex items-center justify-center font-medium text-white bg-green h-10 rounded-[4px]" to={frontUrl}>
-        <button onClick={handleEndBuy}>
+        <button className="w-full h-full" onClick={handleEndBuy}>
           Back to shopping
         </button>
       </Link>
