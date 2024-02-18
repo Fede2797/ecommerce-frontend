@@ -12,12 +12,14 @@ const countProducts = ( cart: CartProduct[] ) => {
 
 export const Navbar = () => {
 
-  const { state } = useAppContext();
+  const { state } = useAppContext()!;
+  const cartState = state.cartState.cart;
+
   const [productQuantity, setproductQuantity] = useState(0);
 
   useEffect(() => {
-    setproductQuantity( countProducts( state ) );
-  }, [state])
+    setproductQuantity( countProducts( cartState ) );
+  }, [cartState])
   
 
   return (

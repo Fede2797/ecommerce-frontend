@@ -7,24 +7,25 @@ import { useEffect, useState } from 'react'
 
 export const CartPage = () => {
 
-  const { state, dispatch } = useAppContext();
+  const { state, dispatch } = useAppContext()!;
+  const cartState = state.cartState.cart;
   
   const [noProductsInCart, setNoProductsInCart] = useState(true);
   const [totalPrice, setTotalPrice] = useState(0);
   
   useEffect(() => {
-    if (state.length === 0) {
+    if (cartState.length === 0) {
       setNoProductsInCart(true);
       return;
     }
     
-    const total = state.reduce(
+    const total = cartState.reduce(
       (accumulator: number, product: CartProduct) => accumulator + product.price * product.quantity, 0
     );
 
     setTotalPrice(total);
     setNoProductsInCart(false);
-  }, [state])
+  }, [cartState])
   
 
   const handleRemoveProduct = (product: CartProduct) => {
@@ -92,10 +93,9 @@ export const CartPage = () => {
             <div className='px-2'>Quantity</div>
             <div className='px-2'>Total</div>
           </div>
-
           {
-            state.map((product: CartProduct) => (
-              <div key={product._id} className="mb-5 h-[120px] grid grid-cols-6 gap-4 my-2">
+            cartState.map((product: CartProduct) => (
+              <div key={product._id + product.size} className="mb-5 h-[120px] grid grid-cols-6 gap-4 my-2">
                 <div className="flex col-span-3">
                   {/* Left side image */}
                   <figure className='w-[120px] h-[120px] flex justify-center items-center p-2 bg-bg-gray'>
