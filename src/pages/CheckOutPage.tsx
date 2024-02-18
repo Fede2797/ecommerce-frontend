@@ -2,7 +2,6 @@ import { useAppContext } from "../AppProvider"
 import { checkoutSection } from "../config/constants";
 import { CartProduct } from '../types/AppTypes';
 import { CheckoutBreadcrumbs,
-  CheckoutButtonsNavigation,
   CheckoutLogo,
   CheckoutProductCard,
   CheckoutTotalDetails,
@@ -13,9 +12,10 @@ import { CheckoutBreadcrumbs,
 
 export const CheckOutPage = ({section}: {section: string}) => {
 
-  const { state } = useAppContext();
+  const { state } = useAppContext()!;
+  const cartState = state.cartState.cart;
 
-  const subTotal = state.reduce(
+  const subTotal = cartState.reduce(
     (accumulator: number, product: CartProduct) => accumulator + product.price * product.quantity, 0
   );
 
@@ -24,9 +24,9 @@ export const CheckOutPage = ({section}: {section: string}) => {
       case checkoutSection.DETAILS:
         return ( <Details /> )
       case checkoutSection.SHIPPING:
-        return ( <Shipping /> )
+        return ( <Shipping section={section}/> )
       case checkoutSection.PAYMENT:
-        return ( <Payment /> )
+        return ( <Payment section={section} /> )
       case checkoutSection.CONFIRM:
         return ( <Confirm /> )
       default:
@@ -38,13 +38,11 @@ export const CheckOutPage = ({section}: {section: string}) => {
     <div className="min-h-[100vh] flex font-roboto tracking-[-0.9px]">
       {/* Left section */}
       <section className="w-full mr-[120px] flex flex-col items-end">
-        <article className="pb-10 flex flex-col justify-between h-full w-full max-w-[445px]">
-          <div>
-            <CheckoutLogo />
+        <article className="pb-10 flex flex-col h-full w-full max-w-[445px]">
+            <CheckoutLogo section={section} />
             <CheckoutBreadcrumbs section={section} />
             <h1 className={`mb-4 text-md text-red-500 ${section === checkoutSection.CONFIRM ? "hidden" : ""}`}>* All fields are designed for display only. None of them are mandatory</h1>
             {sectionRender()}
-            {/* <CheckoutButtonsNavigation section={section}/> */}
         </article>
       </section>
       {/* Right section */}
@@ -52,7 +50,7 @@ export const CheckOutPage = ({section}: {section: string}) => {
         {/* Products in cart container */}
         <div className="w-full max-w-[410px] mb-4 pb-12 flex flex-col gap-8 border-b-[1px]">
           {
-            state.map((product: CartProduct, index: number) => (
+            cartState.map((product: CartProduct, index: number) => (
               <CheckoutProductCard product={product} key={index} />
             ))
           }
