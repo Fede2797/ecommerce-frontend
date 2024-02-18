@@ -22,13 +22,11 @@ export const Details = () => {
   const navigate = useNavigate();
 
   const handleButtonNavigateBackward = (buttonRoute: string | undefined) => {
-    console.log("Navigate backward");
     dispatch({ type: formReducerConst.EMPTY_FORM });
     navigate(buttonRoute ? "/" + buttonRoute : "#");
   }
 
   const handleButtonNavigateForward = (buttonRoute: string | undefined) => {
-    console.log("Navigate forward");
     navigate("/" + buttonRoute);
   }
 
