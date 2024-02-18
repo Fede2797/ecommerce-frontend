@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { cartRoute, checkoutButtons, checkoutSection, frontUrl, shippingRoute } from '../../config/constants'
+import { checkoutButtons, checkoutSection } from '../../config/constants'
 import { Link } from 'react-router-dom'
 
 interface ButtonsType {
@@ -34,13 +34,13 @@ export const CheckoutButtonsNavigation = ({section}: {section: string}) => {
   return (
     <nav className={`mt-[60px] flex text-lg items-center ${section === checkoutSection.CONFIRM ? "hidden" : ""}`}>
       <div className="w-full">
-        <Link to={buttons ? buttons.backButtonRoute : "#"}>
+        <Link to={buttons ? "/" + buttons.backButtonRoute : "#"}>
           <span className="text-md underline text-green cursor-pointer">
             {buttons?.backButtonName}
           </span>
         </Link>
       </div>
-      <Link className='w-full flex items-center justify-center font-medium text-white bg-green h-10 rounded-[4px]' to={buttons ? buttons.forwardButtonRoute : "#"}>
+      <Link className='w-full flex items-center justify-center font-medium text-white bg-green h-10 rounded-[4px]' to={buttons ? "/" + buttons.forwardButtonRoute : "#"}>
         <span>
           {buttons?.forwardButtonName}
         </span>
