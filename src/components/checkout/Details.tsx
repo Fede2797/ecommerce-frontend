@@ -1,6 +1,7 @@
 import { useAppContext } from '../../AppProvider';
 import { checkoutButtons, formReducerConst, provincias } from '../../config/constants';
 import { useNavigate } from 'react-router-dom';
+
 const defaultValues = {
   contact: "example@gmail.com",
   first_name: "John",
@@ -13,6 +14,7 @@ const defaultValues = {
 }
 
 export const Details = () => {
+
   const { state, dispatch } = useAppContext()!;
 
   const formState = state.formState;
@@ -80,9 +82,10 @@ export const Details = () => {
         {/* Contact input */}
         <input 
           type="text" 
-          id="contact" 
+          id="contact"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
           placeholder="Email or mobile phone number"
+          defaultValue={formState.contact}
         />
       </div>
       {/* Shipping Address */}
@@ -95,6 +98,7 @@ export const Details = () => {
             id="first_name" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
             placeholder="Name"
+            defaultValue={formState.first_name}
           />
           {/* Last name input */}
           <input 
@@ -102,40 +106,45 @@ export const Details = () => {
             id="last_name" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
             placeholder="Last Name"
+            defaultValue={formState.last_name}
           />
         </div>
         {/* Address and number */}
-        <input 
+        <input
           type="text" 
           id="address" 
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
           placeholder="Address and number"
+          defaultValue={formState.shipTo}
         />
         {/* Shipping note */}
-        <input 
+        <input
           type="text" 
           id="note" 
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
           placeholder="Shipping note"
+          defaultValue={formState.note}
         />
         <div className="flex gap-3">
           {/* City */}
-          <input 
+          <input
             type="text" 
             id="city" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
             placeholder="City"
+            defaultValue={formState.city}
           />
           {/* Zip Code */}
-          <input 
+          <input
             type="text" 
             id="zipcode" 
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
             placeholder="Zip code"
+            defaultValue={formState.zipcode}
           />
         </div>
         <select 
-          id="order" 
+          id="state" 
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
         >
           {
