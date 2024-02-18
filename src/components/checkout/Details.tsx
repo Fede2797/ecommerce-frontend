@@ -1,6 +1,75 @@
-import { provincias } from '../../config/constants'
+import { useAppContext } from '../../AppProvider';
+import { checkoutButtons, formReducerConst, provincias } from '../../config/constants';
+import { useNavigate } from 'react-router-dom';
+const defaultValues = {
+  contact: "example@gmail.com",
+  first_name: "John",
+  last_name: "Doe",
+  note: "",
+  city: "Buenos Aires",
+  zipcode: "C1043",
+  state: "Buenos Aires",
+  address: "Av. Corrientes 1368",
+}
 
 export const Details = () => {
+  const { state, dispatch } = useAppContext()!;
+
+  const formState = state.formState;
+  
+  const navigate = useNavigate();
+
+  const handleButtonNavigateBackward = (buttonRoute: string | undefined) => {
+    console.log("Navigate backward");
+    dispatch({ type: formReducerConst.EMPTY_FORM });
+    navigate(buttonRoute ? "/" + buttonRoute : "#");
+  }
+
+  const handleButtonNavigateForward = (buttonRoute: string | undefined) => {
+    console.log("Navigate forward");
+    navigate("/" + buttonRoute);
+  }
+
+  const handleSubmitForm = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+
+    const target = event.target as typeof event.target & {
+      contact: { value: string };
+      first_name: { value: string };
+      last_name: { value: string };
+      address: { value: string };
+      note: { value: string };
+      city: { value: string };
+      zipcode: { value: string };
+      state: { value: string };
+    };
+
+    const contact = target.contact.value ? target.contact.value : defaultValues.contact;
+    const address = target.address.value ? target.address.value : defaultValues.address;
+    const first_name = target.first_name.value ? target.first_name.value : defaultValues.first_name;
+    const last_name = target.last_name.value ? target.last_name.value : defaultValues.last_name;
+    const note = target.note.value ? target.note.value : defaultValues.note;
+    const city = target.city.value ? target.city.value : defaultValues.city;
+    const zipcode = target.zipcode.value ? target.zipcode.value : defaultValues.zipcode;
+    const state = target.state.value ? target.state.value : defaultValues.state;
+
+    dispatch({ 
+      type: formReducerConst.UPDATE_FORM, 
+      value: {
+        first_name,
+        last_name,
+        contact,
+        note,
+        city,
+        zipcode,
+        state,
+        shipTo: address,
+      }
+    });
+
+    handleButtonNavigateForward(checkoutButtons[0].forwardButtonRoute)
+  }
+
   return (
     <form 
       onSubmit={handleSubmitForm}
