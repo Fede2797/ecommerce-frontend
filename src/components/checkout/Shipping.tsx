@@ -1,20 +1,39 @@
+import { CheckoutButtonsNavigation } from "."
+import { useAppContext } from "../../AppProvider";
 
-export const Shipping = () => {
-  // TODO: Make it so the contact and the address are get from the previos page (checkoutpage)
+export const Shipping = ({section}: {section: string}) => {
+
+  const { state } = useAppContext()!;
+  const formState = state.formState;
+
   return (
-    <>
+    <form>
       <div className="flex flex-col gap-2"> 
         <div className="relative">
             <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
                 Contact
             </div>
-            <input type="text" id="contact" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full ps-20 p-2.5" placeholder="Contact" />
+            <input 
+              type="text" 
+              id="contact" 
+              className="bg-gray-50 border border-gray-300 text-sm block w-full ps-20 p-2.5 outline-none text-gray-500 cursor-default" 
+              placeholder="Contact" 
+              readOnly
+              defaultValue={formState.contact}
+            />
         </div>
         <div className="relative">
             <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
                 Ship to
             </div>
-            <input type="text" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full ps-20 p-2.5" placeholder="Ship to" />
+            <input 
+              type="text" 
+              id="address" 
+              className="bg-gray-50 border border-gray-300 text-sm block w-full ps-20 p-2.5 outline-none text-gray-500 cursor-default" 
+              placeholder="Ship to" 
+              readOnly
+              defaultValue={formState.shipTo}
+            />
         </div>
       </div>
       <div className="mt-10">
@@ -29,6 +48,8 @@ export const Shipping = () => {
           </div>
         </label>
       </div>
-    </>
+
+      <CheckoutButtonsNavigation section={section}/>
+    </form>
   )
 }
