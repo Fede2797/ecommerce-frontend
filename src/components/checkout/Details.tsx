@@ -2,7 +2,9 @@ import { provincias } from '../../config/constants'
 
 export const Details = () => {
   return (
-    <>
+    <form 
+      onSubmit={handleSubmitForm}
+    >
       {/* Contact */}
       <div className="flex flex-col gap-2">
         <h1 className="font-medium">Contact</h1>
@@ -80,6 +82,27 @@ export const Details = () => {
           }
         </select>
       </div>
-    </>
+      {/* <CheckoutButtonsNavigation section={section}/> */}
+      <nav className={`mt-[60px] flex text-lg items-center`}>
+        <div className="w-full">
+          <button 
+            type="button"
+            onClick={() => handleButtonNavigateBackward(checkoutButtons[0].backButtonRoute)}
+          >
+            <span className="text-md underline text-green cursor-pointer">
+              {checkoutButtons[0].backButtonName}
+            </span>
+          </button>
+        </div>
+        <button 
+          type="submit"
+          className='w-full flex items-center justify-center font-medium text-white bg-green h-10 rounded-[4px]'
+        >
+          <span>
+            {checkoutButtons[0].forwardButtonName}
+          </span>
+        </button>
+      </nav>
+    </form>
   )
 }
