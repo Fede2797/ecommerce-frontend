@@ -10,6 +10,11 @@ export const shippingRoute = "cart/checkout/shipping";
 export const paymentRoute = "cart/checkout/payment";
 export const checkPaymentRoute = "cart/checkout/payment/confirm";
 
+export enum formReducerConst {
+  UPDATE_FORM = "UPDATE_FORM",
+  EMPTY_FORM = "EMPTY_FORM",
+}
+
 export enum productReducer {
   ADD_PRODUCT = "ADD_PRODUCT",
   REMOVE_PRODUCT = "REMOVE_PRODUCT",
@@ -26,9 +31,9 @@ export enum checkoutSection {
 }
 
 export const checkoutButtons = [
-  { id: checkoutSection.DETAILS, backButtonName: "Back to cart", backButtonRoute: frontUrl + cartRoute, forwardButtonName: "Go to shipping", forwardButtonRoute: frontUrl + shippingRoute},
-  { id: checkoutSection.DETAILS, backButtonName: "Back to details", backButtonRoute: frontUrl + checkoutRoute, forwardButtonName: "Go to payment", forwardButtonRoute: frontUrl + paymentRoute},
-  { id: checkoutSection.DETAILS, backButtonName: "Back to shipping", backButtonRoute: frontUrl + shippingRoute, forwardButtonName: "Pay now", forwardButtonRoute: frontUrl + checkPaymentRoute}
+  { id: checkoutSection.DETAILS, backButtonName: "Back to cart", backButtonRoute: cartRoute, forwardButtonName: "Go to shipping", forwardButtonRoute: shippingRoute},
+  { id: checkoutSection.SHIPPING, backButtonName: "Back to details", backButtonRoute: checkoutRoute, forwardButtonName: "Go to payment", forwardButtonRoute: paymentRoute},
+  { id: checkoutSection.PAYMENT, backButtonName: "Back to shipping", backButtonRoute: shippingRoute, forwardButtonName: "Pay now", forwardButtonRoute: checkPaymentRoute}
 ]
 
 export const checkoutBreadcrumbs = [
