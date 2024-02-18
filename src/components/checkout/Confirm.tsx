@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
-import { frontUrl, productReducer } from "../../config/constants"
+import { formReducerConst, frontUrl, productReducer } from "../../config/constants"
 import { useAppContext } from "../../AppProvider"
 
 export const Confirm = () => {
 
-  const { dispatch } = useAppContext();
+  const { dispatch } = useAppContext()!;
 
   const handleEndBuy = () => {
     dispatch({ type: productReducer.EMPTY_CART });
+    dispatch({ type: formReducerConst.EMPTY_FORM });
   }
 
   return (
