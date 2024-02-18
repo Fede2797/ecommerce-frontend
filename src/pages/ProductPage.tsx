@@ -15,11 +15,11 @@ const notifySucces = () => toast.success("Product added to the cart");
 
 export const ProductPage = () => {
 
-  let { productId } = useParams();
-  const { dispatch } = useAppContext();
+  const { productId } = useParams();
+  const { dispatch } = useAppContext()!;
   
   const [product, setProduct] = useState<ProductType>();
-  const [validations, setValidations] = useState<String[]>([]);
+  const [validations, setValidations] = useState<string[]>([]);
   const [sizeSelected, setSizeSelected] = useState<number | undefined>();
   const [quantity, setQuantity] = useState(1);
 
