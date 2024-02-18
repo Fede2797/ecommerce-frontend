@@ -8,7 +8,7 @@ export const isProdInCart = (product: CartProduct, cart: CartProduct[]) => {
     if (prod._id === product._id && prod.size === product.size) {
       inCart = true;
     }
-  };
+  }
   return inCart;
 }
 
