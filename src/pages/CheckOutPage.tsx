@@ -29,8 +29,6 @@ export const CheckOutPage = ({section}: {section: string}) => {
         return ( <Payment section={section} /> )
       case checkoutSection.CONFIRM:
         return ( <Confirm /> )
-      default:
-        return <></>
     }
   }
 
