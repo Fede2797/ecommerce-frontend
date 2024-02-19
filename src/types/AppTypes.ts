@@ -1,4 +1,9 @@
-import { formReducerConst, productReducer } from "../config/constants";
+import { formReducerConst, productReducer } from '../config/constants'
+
+export interface SyzeType {
+  size: number,
+  available: boolean
+}
 
 export interface ProductType {
   _id: string,
@@ -16,11 +21,6 @@ export interface ProductUploadType {
   category: string,
   sizes: SyzeType[],
   imgSource: File,
-}
-
-export interface SyzeType {
-  size: number, 
-  available: boolean
 }
 
 export interface CartProduct {

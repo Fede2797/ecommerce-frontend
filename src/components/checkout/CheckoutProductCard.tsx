@@ -1,6 +1,6 @@
-import { CartProduct } from '../../types/AppTypes';
+import { CartProduct } from '../../types/AppTypes'
 
-export const CheckoutProductCard = ({product}: {product: CartProduct}) => {
+export const CheckoutProductCard = ({ product }: {product: CartProduct}) => {
   return (
     <article className="flex gap-12">
       <figure className='relative w-[120px] h-[120px] flex justify-center items-center p-2 bg-bg-gray'>

@@ -1,11 +1,11 @@
+import React from 'react'
 import { options } from '../config/constants'
-import { ProductType } from '../types/AppTypes';
-import { ProductCard } from './ProductCard';
+import { ProductType } from '../types/AppTypes'
+import { ProductCard } from './ProductCard'
 
-export const ProductDisplay = ({products, numberOfResults, orderBy, setOrderBy} : {products: ProductType[], numberOfResults: number, orderBy: string, setOrderBy: (order: string) => void}) => {
-
+export const ProductDisplay = ({ products, numberOfResults, orderBy, setOrderBy } : {products: ProductType[], numberOfResults: number, orderBy: string, setOrderBy: (order: string) => void}) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOrderBy(e.target.value);
+    setOrderBy(e.target.value)
   }
 
   return (
@@ -14,24 +14,24 @@ export const ProductDisplay = ({products, numberOfResults, orderBy, setOrderBy} 
       <div className='mb-10 flex justify-between'>
         {/* Showing all [numberOf] results */}
         <span className='font-poppins text-gray-text'>Showing all {numberOfResults} results</span>
-        {/* Selector of order display*/}
+        {/* Selector of order display */}
         <div className='min-w-[190px]'>
           {/* select */}
-          <select 
-            id="order" 
+          <select
+            id="order"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
             value={orderBy}
             onChange={handleChange}
           >
             {
-              options.map( option => 
-                <option 
+              options.map(option =>
+                <option
                   value={option.value}
                   id={option.value}
                   key={option.value}
                 >
                   {option.label}
-                </option> 
+                </option>
               )
             }
           </select>
@@ -40,7 +40,7 @@ export const ProductDisplay = ({products, numberOfResults, orderBy, setOrderBy} 
       {/* Product container */}
       <div className='w-full grid grid-cols-4 gap-[30px]'>
         {
-          products?.map( prod => (
+          products?.map(prod => (
             <ProductCard key={prod._id} product={prod}/>
           ))
         }

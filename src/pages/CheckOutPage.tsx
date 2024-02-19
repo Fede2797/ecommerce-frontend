@@ -1,34 +1,35 @@
-import { useAppContext } from "../AppProvider"
-import { checkoutSection } from "../config/constants";
-import { CartProduct } from '../types/AppTypes';
-import { CheckoutBreadcrumbs,
+import { useAppContext } from '../AppProvider'
+import { checkoutSection } from '../config/constants'
+import { CartProduct } from '../types/AppTypes'
+import {
+  CheckoutBreadcrumbs,
   CheckoutLogo,
   CheckoutProductCard,
   CheckoutTotalDetails,
-  Confirm, 
+  Confirm,
   Details,
   Payment,
-  Shipping } from "../components/checkout";
+  Shipping
+} from '../components/checkout'
 
-export const CheckOutPage = ({section}: {section: string}) => {
-
-  const { state } = useAppContext()!;
-  const cartState = state.cartState.cart;
+export const CheckOutPage = ({ section }: {section: string}) => {
+  const { state } = useAppContext()!
+  const cartState = state.cartState.cart
 
   const subTotal = cartState.reduce(
     (accumulator: number, product: CartProduct) => accumulator + product.price * product.quantity, 0
-  );
+  )
 
   const sectionRender = () => {
-    switch(section) {
+    switch (section) {
       case checkoutSection.DETAILS:
-        return ( <Details /> )
+        return (<Details />)
       case checkoutSection.SHIPPING:
-        return ( <Shipping section={section}/> )
+        return (<Shipping section={section}/>)
       case checkoutSection.PAYMENT:
-        return ( <Payment section={section} /> )
+        return (<Payment section={section} />)
       case checkoutSection.CONFIRM:
-        return ( <Confirm /> )
+        return (<Confirm />)
     }
   }
 
@@ -39,7 +40,7 @@ export const CheckOutPage = ({section}: {section: string}) => {
         <article className="pb-10 flex flex-col h-full w-full max-w-[445px]">
             <CheckoutLogo section={section} />
             <CheckoutBreadcrumbs section={section} />
-            <h1 className={`mb-4 text-md text-red-500 ${section === checkoutSection.CONFIRM ? "hidden" : ""}`}>* All fields are designed for display only. None of them are mandatory</h1>
+            <h1 className={`mb-4 text-md text-red-500 ${section === checkoutSection.CONFIRM ? 'hidden' : ''}`}>* All fields are designed for display only. None of them are mandatory</h1>
             {sectionRender()}
         </article>
       </section>

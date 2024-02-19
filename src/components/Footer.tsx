@@ -1,4 +1,3 @@
-
 export const Footer = () => {
   return (
     <div className="w-full py-10 px-4 bg-black mt-auto">

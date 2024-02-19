@@ -1,32 +1,30 @@
 import { Link } from 'react-router-dom'
 import { Layout } from '../layout/Layout'
-import { checkoutRoute, frontUrl, productReducer, productsRoute, singleProductRoute } from '../config/constants';
+import { checkoutRoute, frontUrl, productReducer, productsRoute, singleProductRoute } from '../config/constants'
 import { useAppContext } from '../AppProvider'
 import { CartProduct } from '../types/AppTypes'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export const CartPage = () => {
+  const { state, dispatch } = useAppContext()!
+  const cartState = state.cartState.cart
 
-  const { state, dispatch } = useAppContext()!;
-  const cartState = state.cartState.cart;
-  
-  const [noProductsInCart, setNoProductsInCart] = useState(true);
-  const [totalPrice, setTotalPrice] = useState(0);
-  
+  const [noProductsInCart, setNoProductsInCart] = useState(true)
+  const [totalPrice, setTotalPrice] = useState(0)
+
   useEffect(() => {
     if (cartState.length === 0) {
-      setNoProductsInCart(true);
-      return;
+      setNoProductsInCart(true)
+      return
     }
-    
+
     const total = cartState.reduce(
       (accumulator: number, product: CartProduct) => accumulator + product.price * product.quantity, 0
-    );
+    )
 
-    setTotalPrice(total);
-    setNoProductsInCart(false);
+    setTotalPrice(total)
+    setNoProductsInCart(false)
   }, [cartState])
-  
 
   const handleRemoveProduct = (product: CartProduct) => {
     dispatch({
@@ -37,24 +35,24 @@ export const CartPage = () => {
         price: product.price,
         size: product.size,
         imgSource: product.imgSource,
-        quantity: product.quantity,
+        quantity: product.quantity
       }
-    });
+    })
   }
 
   const addQuantity = (product: CartProduct) => {
-    handleQuantityChange({...product, quantity: product.quantity + 1});
+    handleQuantityChange({ ...product, quantity: product.quantity + 1 })
   }
 
   const substractQuantity = (product: CartProduct) => {
-    handleQuantityChange({...product, quantity: product.quantity - 1});
+    handleQuantityChange({ ...product, quantity: product.quantity - 1 })
   }
 
   const changeQuantity = (event: React.FormEvent<HTMLInputElement>, product: CartProduct) => {
-    const number = parseInt(event.currentTarget.value);
-    if ( isNaN(number) || number === 0) return;
+    const number = parseInt(event.currentTarget.value)
+    if (isNaN(number) || number === 0) return
 
-    handleQuantityChange({...product, quantity: number});
+    handleQuantityChange({ ...product, quantity: number })
   }
 
   const handleQuantityChange = (product: CartProduct) => {
@@ -66,9 +64,9 @@ export const CartPage = () => {
         price: product.price,
         size: product.size,
         imgSource: product.imgSource,
-        quantity: product.quantity,
+        quantity: product.quantity
       }
-    });
+    })
   }
 
   return (
@@ -108,7 +106,7 @@ export const CartPage = () => {
                         {product.name}
                       </span>
                     </Link>
-                    <button 
+                    <button
                       className='mr-auto underline text-green'
                       onClick={() => handleRemoveProduct(product)}
                     >
@@ -121,25 +119,25 @@ export const CartPage = () => {
                 {/* Product quantity */}
                 <div className='p-2 flex items-center justify-end'>
                   <div className="w-[80px] h-[30px] px-1 flex justify-around items-center text-lg border-[1px] border-green">
-                    <button 
+                    <button
                       className="w-full text-green"
                       onClick={() => product.quantity > 1 && substractQuantity(product)}
                     >
                       -
                     </button>
-                    <input 
+                    <input
                       className="border-none w-full text-center focus:outline-none"
-                      type="text" 
+                      type="text"
                       value={product.quantity}
                       onChange={(event) => changeQuantity(event, product)}
                     />
-                    <button 
+                    <button
                       className="w-full text-green"
                       onClick={() => addQuantity(product)}
                     >
                       +
                     </button>
-                  </div>  
+                  </div>
                 </div>
                 {/* Product total price */}
                 <div className='p-2 flex items-center justify-end'>${(product.price * product.quantity).toFixed(2)}</div>
@@ -147,7 +145,7 @@ export const CartPage = () => {
             ))
           }
           {/* No products in cart */}
-          { 
+          {
             noProductsInCart && <h1 className='my-20 text-center text-2xl font-poppins'>No products in the cart</h1>
           }
           <div className='mb-[140px] mt-6 pt-10 border-t-[1px] flex justify-end'>
@@ -162,8 +160,8 @@ export const CartPage = () => {
             {/* Checkout button */}
             <div className='w-full max-w-[223px]'>
               <Link to={frontUrl + checkoutRoute}>
-                <button 
-                  className={`w-full h-10 text-white rounded-[4px] text-xl ${noProductsInCart ? "bg-gray-400" : "bg-green"}`}
+                <button
+                  className={`w-full h-10 text-white rounded-[4px] text-xl ${noProductsInCart ? 'bg-gray-400' : 'bg-green'}`}
                   disabled={noProductsInCart}
                 >
                   Check-out

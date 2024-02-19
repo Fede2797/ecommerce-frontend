@@ -1,23 +1,22 @@
-import { CheckoutButtonsNavigation } from "."
-import { useAppContext } from "../../AppProvider"
+import { CheckoutButtonsNavigation } from '.'
+import { useAppContext } from '../../AppProvider'
 
-export const Payment = ({section}: {section: string}) => {
-
-  const { state } = useAppContext()!;
-  const formState = state.formState;
+export const Payment = ({ section }: {section: string}) => {
+  const { state } = useAppContext()!
+  const formState = state.formState
 
   return (
     <form>
-      <div className="flex flex-col gap-2">        
+      <div className="flex flex-col gap-2">
         <div className="relative">
             <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
                 Contact
             </div>
-            <input 
-              type="text" 
-              id="contact" 
-              className="bg-gray-50 border border-gray-300 text-sm block w-full ps-20 p-2.5 outline-none text-gray-500 cursor-default" 
-              placeholder="Contact" 
+            <input
+              type="text"
+              id="contact"
+              className="bg-gray-50 border border-gray-300 text-sm block w-full ps-20 p-2.5 outline-none text-gray-500 cursor-default"
+              placeholder="Contact"
               readOnly
               defaultValue={formState.contact}
             />
@@ -26,11 +25,11 @@ export const Payment = ({section}: {section: string}) => {
             <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
                 Ship to
             </div>
-            <input 
-              type="text" 
-              id="address" 
-              className="bg-gray-50 border border-gray-300 text-sm block w-full ps-20 p-2.5 outline-none text-gray-500 cursor-default" 
-              placeholder="Ship to" 
+            <input
+              type="text"
+              id="address"
+              className="bg-gray-50 border border-gray-300 text-sm block w-full ps-20 p-2.5 outline-none text-gray-500 cursor-default"
+              placeholder="Ship to"
               readOnly
               defaultValue={formState.shipTo}
             />
@@ -39,11 +38,11 @@ export const Payment = ({section}: {section: string}) => {
             <div className="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
                 Method
             </div>
-            <input 
-              type="text" 
-              id="method" 
-              className="bg-gray-50 border border-gray-300 text-sm block w-full ps-20 p-2.5 outline-none text-gray-500 cursor-default" 
-              placeholder="Method" 
+            <input
+              type="text"
+              id="method"
+              className="bg-gray-50 border border-gray-300 text-sm block w-full ps-20 p-2.5 outline-none text-gray-500 cursor-default"
+              placeholder="Method"
               readOnly
               defaultValue="Standard Shipping"
             />
@@ -62,35 +61,35 @@ export const Payment = ({section}: {section: string}) => {
           <div className="p-4 flex flex-col gap-2">
             {/* Card number */}
             <div className="relative">
-              <input 
-                type="text" 
-                id="input" 
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              <input
+                type="text"
+                id="input"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Card number"
               />
             </div>
             {/* Holder name */}
             <div className="relative">
-              <input 
-                type="text" 
-                id="input" 
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              <input
+                type="text"
+                id="input"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Holder name"
               />
             </div>
             <div className="flex gap-3">
               {/* Expiration */}
-              <input 
-                type="text" 
-                id="input" 
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              <input
+                type="text"
+                id="input"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Expiration (MM/YY)"
               />
               {/* Last name input */}
-              <input 
-                type="text" 
-                id="input" 
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              <input
+                type="text"
+                id="input"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="CCV"
               />
             </div>
@@ -99,7 +98,7 @@ export const Payment = ({section}: {section: string}) => {
 
       <CheckoutButtonsNavigation section={section}/>
 
-      {/* 
+      {/*
       // TODO: Finish "Billing address section"
       <div className="mt-10">
         <h1 className="font-medium">Billing Address</h1>
@@ -107,13 +106,13 @@ export const Payment = ({section}: {section: string}) => {
       <div className="flex flex-col gap-3">
         <label htmlFor="helper-radio1" className="mt-6 flex items-center ps-4 p-3 border border-gray-200 rounded">
           <div className="flex items-center h-5">
-              <input 
+              <input
                 readOnly
-                checked 
-                name="billing" 
-                id="helper-radio1" 
-                type="radio" 
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" 
+                checked
+                name="billing"
+                id="helper-radio1"
+                type="radio"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
               />
           </div>
           <div className="ms-2 text-sm">
@@ -122,11 +121,11 @@ export const Payment = ({section}: {section: string}) => {
         </label>
         <label htmlFor="helper-radio2" className="flex items-center ps-4 p-3 border border-gray-200 rounded">
           <div className="flex items-center h-5">
-              <input 
-                name="billing" 
-                id="helper-radio2" 
-                type="radio" 
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300" 
+              <input
+                name="billing"
+                id="helper-radio2"
+                type="radio"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
               />
           </div>
           <div className="ms-2 text-sm">
