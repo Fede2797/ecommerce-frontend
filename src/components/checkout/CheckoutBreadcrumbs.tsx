@@ -38,11 +38,15 @@ export const CheckoutBreadcrumbs = ({section}: {section: string}) => {
         checkoutBreadcrumbs.map( (item, index) => (
           <div className='flex gap-3 items-center' key={index}>
             <li 
-              className={`${index < sectionPosition ? "text-green" : "text-[#616161]" } ${sectionPosition === index ? "text-[#000] semibold" : ""}`}
+              className={`transition-all ${index < sectionPosition 
+                          ? "text-green" 
+                          : sectionPosition === index 
+                            ? "text-[#000] semibold" 
+                            : "text-[#616161]" }`}
             >
               <Link 
                 className={`${index <= sectionPosition ? "cursor-pointer" : "cursor-default"}`} 
-                to={(index > sectionPosition || sectionPosition !== 3) ? item.route : "#"}
+                to={(index < sectionPosition && sectionPosition !== 3) ? item.route : "#"}
               >
                 {item.name}
               </Link>
