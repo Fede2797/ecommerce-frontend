@@ -39,7 +39,7 @@ export const Homepage = () => {
           <h2 className='mt-3 mb-14 font-poppins text-lg text-center text-gray-text'>Order the perfect shoes for your feet</h2>
 
           {/* Product container */}
-          <div className='w-full grid grid-cols-4 gap-[30px]'>
+          <div className='w-full grid grid-cols-4 gap-3'>
             {
               products?.map((prod: ProductType) => (
                 <ProductCard key={prod.name} product={prod}/>

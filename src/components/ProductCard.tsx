@@ -5,22 +5,19 @@ import { frontUrl, singleProductRoute } from '../config/constants'
 export const ProductCard = ({ product }: {product: ProductType}) => {
   return (
     <Link to={ frontUrl + singleProductRoute + product._id }>
-      <article className="group w-[255px] max-h-[230px] shadow-[0px_4px_24px_0px_rgba(123,123,123,0.15)] hover:shadow-[0px_4px_30px_0px_rgba(123,123,123,0.35)] transition-all duration-200 cursor-pointer relative overflow-hidden">
-        <div className='h-[150px] overflow-hidden flex justify-center items-center bg-bg-gray'>
+      <article className="group w-full max-h-[350px] transition-all duration-200 cursor-pointer relative overflow-hidden">
+        <div className='aspect-square overflow-hidden flex justify-center items-center bg-[#F6F6F6]'>
           <img
             src={product.imgSource}
             alt={product.name}
-            className="w-full max-w-[85%] duration-200 group-hover:scale-110"
+            className="w-full max-w-[85%] duration-200"
             />
         </div>
-        {/* Details */}
-        <div className='w-full px-6 pb-4 pt-3 text-center h-20 flex flex-col justify-between'>
-          {/* Product Name */}
-          <span className='text-left font-poppins text-ellipsis overflow-hidden whitespace-nowrap'>
+        <div className='w-full py-2 text-center h-20 flex flex-col'>
+          <span className='text-left font-medium font-roboto text-ellipsis overflow-hidden  whitespace-nowrap'>
             {product.name}
           </span>
-          {/* Price */}
-          <span className='text-right text-xl font-roboto text-green'>
+          <span className='text-left font-roboto font-semibold'>
             ${product.price}
           </span>
         </div>
@@ -28,3 +25,26 @@ export const ProductCard = ({ product }: {product: ProductType}) => {
     </Link>
   )
 }
+
+//       <article className="group w-full max-h-[350px] transition-all duration-200 cursor-pointer relative overflow-hidden">
+//   <div className="w-full aspect-square overflow-hidden flex justify-center items-center bg-[#F6F6F6]">
+//     <div className="">
+//       <img
+//         src={product.imgSource}
+//         alt={product.name}
+//         className="object-contain w-full h-full duration-200"
+//       />
+//     </div>
+//   </div>
+//   {/* Details */}
+//   <div className="w-full py-2 text-center h-20 flex flex-col">
+//     {/* Product Name */}
+//     <span className="text-left font-medium font-roboto text-ellipsis overflow-hidden whitespace-nowrap">
+//       {product.name}
+//     </span>
+//     {/* Price */}
+//     <span className="text-left font-roboto font-semibold">
+//       ${product.price}
+//     </span>
+//   </div>
+// </article>
