@@ -36,7 +36,7 @@ export const Homepage = () => {
         </section>
 
         {/* Products */}
-        <section className='md:pt-10 pb-20 m-auto max-w-[1200px]'>
+        <section className='md:pt-10 px-5 pb-20 m-auto max-w-[1200px]'>
 
           <h1 className='mt-12 font-poppins text-[40px] text-center'>Popular</h1>
           <h2 className='mt-3 mb-14 font-poppins text-lg text-center text-gray-text'>Order the perfect shoes for your feet</h2>
