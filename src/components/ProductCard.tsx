@@ -5,7 +5,7 @@ import { frontUrl, singleProductRoute } from '../config/constants'
 export const ProductCard = ({ product }: {product: ProductType}) => {
   return (
     <Link to={ frontUrl + singleProductRoute + product._id }>
-      <article className="group w-full px-5 md:px-0 md:max-h-[350px] transition-all duration-200 cursor-pointer relative overflow-hidden">
+      <article className="group w-full md:max-h-[350px] transition-all duration-200 cursor-pointer relative overflow-hidden">
         <div className='aspect-square overflow-hidden flex justify-center items-center bg-[#F6F6F6]'>
           <img
             src={product.imgSource}

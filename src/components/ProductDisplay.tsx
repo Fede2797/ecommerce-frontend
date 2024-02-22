@@ -9,9 +9,9 @@ export const ProductDisplay = ({ products, numberOfResults, orderBy, setOrderBy 
   }
 
   return (
-    <section className='w-full pt-10 pb-20 m-auto max-w-[1200px]'>
+    <section className='w-full pt-10 pb-20 px-5 m-auto max-w-[1200px]'>
       {/* Order display & info */}
-      <div className='mb-5 px-5 flex flex-col gap-5 justify-between items-center md:mb-10 md:flex-row md:gap-0'>
+      <div className='mb-5 flex flex-col gap-5 justify-between items-center md:mb-10 md:flex-row md:gap-0'>
         {/* Showing all [numberOf] results */}
         <span className='order-2 font-poppins text-gray-text md:order-1'>Showing all {numberOfResults} results</span>
         {/* Selector of order display */}
