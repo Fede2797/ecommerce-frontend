@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CheckoutLogo } from './checkout/CheckoutLogo'
-import { cartRoute, frontUrl } from '../config/constants'
+import { cartRoute, frontUrl, kidsRoute, menRoute, productsRoute, womenRoute } from '../config/constants'
 
 export const SideNavbar = ({ productQuantity }: {productQuantity: number}) => {
   const [toggleNav, setToggleNav] = useState(false)
@@ -28,11 +28,21 @@ export const SideNavbar = ({ productQuantity }: {productQuantity: number}) => {
       <div
         className={`top-[72px] left-0 right-0 h-[100vh] w-[100%] fixed flex z-40  ease-in-out duration-300 ${toggleNav ? 'translate-x-0' : '-translate-x-full'}`}
       >
-        <div className='w-[70%] h-full bg-white'>
-          <h3 className="text-4xl font-semibold">I am a sidebar</h3>
-        </div>
-        <button onClick={toggleSideNav} className={`h-full ${toggleNav ? 'w-[30%]' : 'w-0'}`}>
-        </button>
+        <ul className='w-[70%] h-full bg-white border-r shadow-2xl'>
+          <Link to={frontUrl + productsRoute}>
+            <li className="pt-8 pl-8 text-2xl font-semibold">Collections</li>
+          </Link>
+          <Link to={frontUrl + womenRoute}>
+            <li className="pt-8 pl-8 text-2xl font-semibold">Women</li>
+          </Link>
+          <Link to={frontUrl + menRoute}>
+            <li className="pt-8 pl-8 text-2xl font-semibold">Men</li>
+          </Link>
+          <Link to={frontUrl + kidsRoute}>
+            <li className="pt-8 pl-8 text-2xl font-semibold">Kids</li>
+          </Link>
+        </ul>
+        <button onClick={toggleSideNav} className={`h-full cursor-default ${toggleNav ? 'w-[30%]' : 'w-0'}`}></button>
       </div>
     </div>
   )
