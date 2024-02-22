@@ -28,7 +28,7 @@ export const SideNavbar = ({ productQuantity }: {productQuantity: number}) => {
       <div
         className={`top-[72px] left-0 right-0 h-[100vh] w-[100%] fixed flex z-40  ease-in-out duration-300 ${toggleNav ? 'translate-x-0' : '-translate-x-full'}`}
       >
-        <ul className='w-[70%] h-full bg-white border-r shadow-2xl'>
+        <ul className='w-[70%] h-full bg-white border-r shadow-2xl tracking-tighter'>
           <Link to={frontUrl + productsRoute}>
             <li className="pt-8 pl-8 text-2xl font-semibold">Collections</li>
           </Link>
