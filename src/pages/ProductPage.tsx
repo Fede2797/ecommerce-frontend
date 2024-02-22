@@ -71,10 +71,10 @@ export const ProductPage = () => {
 
   return (
     <Layout>
-      <section className="w-full max-w-[1200px] px-4 py-10 m-auto flex justify-center gap-6">
+      <section className="w-full max-w-[1200px] px-4 py-10 m-auto flex flex-col md:flex-row justify-center gap-6">
         {/* Product image */}
-        <div className="w-full flex justify-end">
-          <figure className="max-w-[500px] h-[400px] flex justify-center items-center bg-[#F7F8FA] overflow-hidden">
+        <div className="w-full flex justify-center md:justify-end bg-[#F7F8FA] md:bg-white">
+          <figure className="max-w-[500px] md:h-[400px] flex justify-center items-center md:bg-[#F7F8FA] overflow-hidden">
             {/* Image-Zoom component */}
             <Zoom>
                 <img
