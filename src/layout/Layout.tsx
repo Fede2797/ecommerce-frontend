@@ -7,7 +7,7 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-w-screen min-h-screen flex flex-col text-black">
+    <div className="relative pt-[72px] min-w-screen min-h-screen flex flex-col text-black">
       <Navbar />
       {children}
       <Footer />
