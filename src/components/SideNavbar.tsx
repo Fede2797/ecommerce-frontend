@@ -9,7 +9,7 @@ export const SideNavbar = ({ productQuantity }: {productQuantity: number}) => {
     setToggleNav(!toggleNav)
   }
   return (
-    <div className="fixed top-0 w-full h-[72px] px-6 flex items-center justify-between bg-white border-b-[1px] border-gray-200 md:hidden z-30">
+    <div className="fixed top-0 w-full h-[72px] px-4 flex items-center justify-between bg-white border-b-[1px] border-gray-200 md:hidden z-30 md:px-6">
       <button onClick={toggleSideNav}>
         <img src="/hamburger-menu.svg" alt="" />
       </button>
