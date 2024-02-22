@@ -21,6 +21,9 @@ export const CategoryPage = ({ category }: {category: string}) => {
 
   return (
     <Layout>
+      <h1 className='px-5 pt-10 text-4xl font-semibold tracking-tighter'>
+        {category.charAt(0).toUpperCase() + category.slice(1)}
+      </h1>
       <ProductDisplay
         products={products}
         numberOfResults={numberOfResults}
