@@ -21,7 +21,7 @@ export const CategoryPage = ({ category }: {category: string}) => {
 
   return (
     <Layout>
-      <h1 className='px-5 pt-10 text-4xl font-semibold tracking-tighter'>
+      <h1 className='w-full max-w-[1200px] mx-auto px-5 pt-10 text-4xl font-semibold tracking-tighter'>
         {category.charAt(0).toUpperCase() + category.slice(1)}
       </h1>
       <ProductDisplay
