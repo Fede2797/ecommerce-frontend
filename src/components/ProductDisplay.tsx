@@ -11,15 +11,15 @@ export const ProductDisplay = ({ products, numberOfResults, orderBy, setOrderBy 
   return (
     <section className='w-full pt-10 pb-20 m-auto max-w-[1200px]'>
       {/* Order display & info */}
-      <div className='mb-10 flex justify-between'>
+      <div className='mb-5 px-5 flex flex-col gap-5 justify-between items-center md:mb-10 md:flex-row md:gap-0'>
         {/* Showing all [numberOf] results */}
-        <span className='font-poppins text-gray-text'>Showing all {numberOfResults} results</span>
+        <span className='order-2 font-poppins text-gray-text md:order-1'>Showing all {numberOfResults} results</span>
         {/* Selector of order display */}
-        <div className='min-w-[190px]'>
+        <div className='order-1 w-full md:order-2 md:w-auto md:min-w-[190px]'>
           {/* select */}
           <select
             id="order"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+            className="border border-gray-300 text-gray-900 text-sm block w-full p-2"
             value={orderBy}
             onChange={handleChange}
           >
@@ -38,7 +38,7 @@ export const ProductDisplay = ({ products, numberOfResults, orderBy, setOrderBy 
         </div>
       </div>
       {/* Product container */}
-      <div className='w-full grid grid-cols-4 gap-[30px]'>
+      <div className='w-full grid grid-cols-1 md:grid-cols-4 gap-[30px]'>
         {
           products?.map(prod => (
             <ProductCard key={prod._id} product={prod}/>
