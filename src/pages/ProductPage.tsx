@@ -98,7 +98,7 @@ export const ProductPage = () => {
           </li>
           {/* Sizes container */}
           <li className="mt-3">
-            <div className="max-w-[230px] grid grid-cols-5 grid-rows-2 gap-2">
+            <div className="max-w-[260px] grid grid-cols-5 grid-rows-2 gap-2">
               {
                 product?.sizes.map(size => (
                   <SizeButton key={size.size} size={size} sizeSelected={sizeSelected} setSizeSelected={setSizeSelected}/>
@@ -108,7 +108,7 @@ export const ProductPage = () => {
           </li>
           {/* Price/Quantity/Add to cart buttons */}
           <li className="flex flex-col mt-2">
-            <div className="flex gap-5 items-center">
+            <div className="max-w-[260px] flex gap-5 items-center justify-between">
               {/* Price */}
               <div className="text-[26px] text-green font-semibold tracking-tighter">
                 ${product?.price}
@@ -137,7 +137,7 @@ export const ProductPage = () => {
             </div>
             {/* Add to cart button */}
             <button
-              className="max-w-[350px] h-[42px] w-full mt-1 flex items-center justify-center gap-2 bg-green text-white rounded-[4px] text-[20px] hover:bg-[#458f66] transition-all"
+              className="max-w-[260px] h-[42px] w-full mt-2 flex items-center justify-center gap-2 bg-green text-white rounded-[4px] text-[20px] hover:bg-[#458f66] transition-all"
               onClick={handleAddToCart}
             >
               <span>
