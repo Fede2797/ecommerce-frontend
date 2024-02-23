@@ -1,15 +1,9 @@
 import { Link } from 'react-router-dom'
 import { cartRoute, frontUrl, kidsRoute, menRoute, womenRoute } from '../config/constants'
 import { useAppContext } from '../AppProvider'
-import { CartProduct } from '../types/AppTypes'
 import { useEffect, useState } from 'react'
 import { SideNavbar } from './SideNavbar'
-
-const countProducts = (cart: CartProduct[]) => {
-  const initialValue = 0
-  const count = cart.reduce((acum, current) => acum + current.quantity, initialValue)
-  return count
-}
+import { countProducts } from '../helpers/checkoutHelper'
 
 export const Navbar = () => {
   const { state } = useAppContext()!
