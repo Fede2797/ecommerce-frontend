@@ -1,3 +1,4 @@
+import React from 'react'
 import { useAppContext } from '../../AppProvider'
 import { checkoutButtons, formReducerConst, provincias } from '../../config/constants'
 import { useNavigate } from 'react-router-dom'
@@ -45,8 +46,8 @@ export const Details = () => {
 
     const contact = target.contact.value ? target.contact.value : defaultValues.contact
     const address = target.address.value ? target.address.value : defaultValues.address
-    const first_name = target.first_name.value ? target.first_name.value : defaultValues.first_name
-    const last_name = target.last_name.value ? target.last_name.value : defaultValues.last_name
+    const firstName = target.first_name.value ? target.first_name.value : defaultValues.first_name
+    const lastName = target.last_name.value ? target.last_name.value : defaultValues.last_name
     const note = target.note.value ? target.note.value : defaultValues.note
     const city = target.city.value ? target.city.value : defaultValues.city
     const zipcode = target.zipcode.value ? target.zipcode.value : defaultValues.zipcode
@@ -55,8 +56,8 @@ export const Details = () => {
     dispatch({
       type: formReducerConst.UPDATE_FORM,
       value: {
-        first_name,
-        last_name,
+        first_name: firstName,
+        last_name: lastName,
         contact,
         note,
         city,
@@ -71,94 +72,97 @@ export const Details = () => {
 
   return (
     <form
+      className='h-full flex flex-col justify-between'
       onSubmit={handleSubmitForm}
     >
       {/* Contact */}
-      <div className="flex flex-col gap-2">
-        <h1 className="font-medium">Contact</h1>
-        {/* Contact input */}
-        <input
-          type="text"
-          id="contact"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="Email or mobile phone number"
-          defaultValue={formState.contact}
-        />
-      </div>
-      {/* Shipping Address */}
-      <div className="mt-8 flex flex-col gap-2">
-        <h1 className="font-medium">Shipping Address</h1>
-        <div className="flex gap-3">
-          {/* Name input */}
+      <div>
+        <div className="flex flex-col gap-2">
+          <h1 className="font-medium">Contact</h1>
+          {/* Contact input */}
           <input
             type="text"
-            id="first_name"
+            id="contact"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Name"
-            defaultValue={formState.first_name}
-          />
-          {/* Last name input */}
-          <input
-            type="text"
-            id="last_name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Last Name"
-            defaultValue={formState.last_name}
+            placeholder="Email or mobile phone number"
+            defaultValue={formState.contact}
           />
         </div>
-        {/* Address and number */}
-        <input
-          type="text"
-          id="address"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="Address and number"
-          defaultValue={formState.shipTo}
-        />
-        {/* Shipping note */}
-        <input
-          type="text"
-          id="note"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          placeholder="Shipping note"
-          defaultValue={formState.note}
-        />
-        <div className="flex gap-3">
-          {/* City */}
+        {/* Shipping Address */}
+        <div className="mt-8 flex flex-col gap-2">
+          <h1 className="font-medium">Shipping Address</h1>
+          <div className="flex flex-col gap-2 md:gap-3 md:flex-row">
+            {/* Name input */}
+            <input
+              type="text"
+              id="first_name"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Name"
+              defaultValue={formState.first_name}
+            />
+            {/* Last name input */}
+            <input
+              type="text"
+              id="last_name"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Last Name"
+              defaultValue={formState.last_name}
+            />
+          </div>
+          {/* Address and number */}
           <input
             type="text"
-            id="city"
+            id="address"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="City"
-            defaultValue={formState.city}
+            placeholder="Address and number"
+            defaultValue={formState.shipTo}
           />
-          {/* Zip Code */}
+          {/* Shipping note */}
           <input
             type="text"
-            id="zipcode"
+            id="note"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Zip code"
-            defaultValue={formState.zipcode}
+            placeholder="Shipping note"
+            defaultValue={formState.note}
           />
+          <div className="flex flex-col gap-2 md:gap-3 md:flex-row">
+            {/* City */}
+            <input
+              type="text"
+              id="city"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="City"
+              defaultValue={formState.city}
+            />
+            {/* Zip Code */}
+            <input
+              type="text"
+              id="zipcode"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Zip code"
+              defaultValue={formState.zipcode}
+            />
+          </div>
+          <select
+            id="state"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+          >
+            {
+              provincias.map(option =>
+                <option
+                  value={option.name}
+                  id={option.id}
+                  key={option.id}
+                >
+                  {option.name}
+                </option>
+              )
+            }
+          </select>
         </div>
-        <select
-          id="state"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
-        >
-          {
-            provincias.map(option =>
-              <option
-                value={option.name}
-                id={option.id}
-                key={option.id}
-              >
-                {option.name}
-              </option>
-            )
-          }
-        </select>
       </div>
       {/* <CheckoutButtonsNavigation section={section}/> */}
-      <nav className={'mt-[60px] flex text-lg items-center'}>
+      <nav className={'flex mb-10 mt-[60px] text-lg items-center'}>
         <div className="w-full">
           <button
             type="button"
