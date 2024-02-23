@@ -31,7 +31,7 @@ export const CheckoutButtonsNavigation = ({ section }: {section: string}) => {
   }, [section])
 
   return (
-    <nav className={`mt-[60px] flex text-lg items-center ${section === checkoutSection.CONFIRM ? 'hidden' : ''}`}>
+    <nav className="flex mb-10 mt-[60px] text-lg items-center">
       <div className="w-full">
         <Link to={buttons ? '/' + buttons.backButtonRoute : '#'}>
           <span className="text-md underline text-green cursor-pointer">
