@@ -1,4 +1,4 @@
-import { formReducerConst, productReducer } from '../config/constants'
+import { formReducerConst, loadingReducerConst, productReducer } from '../config/constants'
 
 export interface SyzeType {
   size: number,
@@ -47,9 +47,14 @@ export interface FormState {
   method: string;
 }
 
+export interface LoadingState {
+  isLoadingProducts: boolean;
+}
+
 export interface AppState {
   cartState: CartState;
   formState: FormState;
+  loadingState: LoadingState;
 }
 
 interface AddProductAction {
@@ -80,10 +85,20 @@ interface EmptyFormAction {
   type: formReducerConst.EMPTY_FORM;
 }
 
+interface SetLoadingAction {
+  type: loadingReducerConst.SET_LOADING;
+}
+
+interface SetNotLoadingAction {
+  type: loadingReducerConst.SET_NOT_LOADING;
+}
+
 export type AppAction =
   | AddProductAction
   | RemoveProductAction
   | ChangeQuantityAction
   | EmptyCartAction
   | UpdateFormAction
-  | EmptyFormAction;
+  | EmptyFormAction
+  | SetLoadingAction
+  | SetNotLoadingAction;

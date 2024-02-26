@@ -10,6 +10,11 @@ export const shippingRoute = 'cart/checkout/shipping'
 export const paymentRoute = 'cart/checkout/payment'
 export const checkPaymentRoute = 'cart/checkout/payment/confirm'
 
+export enum loadingReducerConst {
+  SET_LOADING = 'SET_LOADING',
+  SET_NOT_LOADING = 'SET_NOT_LOADING',
+}
+
 export enum formReducerConst {
   UPDATE_FORM = 'UPDATE_FORM',
   EMPTY_FORM = 'EMPTY_FORM',

@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, ReactNode, Dispatch } from 'react'
-import { formReducerConst, productReducer } from './config/constants'
-import { AppAction, AppState, CartState, FormState } from './types/AppTypes'
+import { formReducerConst, productReducer, loadingReducerConst } from './config/constants'
+import { AppAction, AppState, CartState, FormState, LoadingState } from './types/AppTypes'
 import { addItemToCart, changeItemQuantity, removeItemFromCart } from './helpers/providerHelper'
 
 const AppContext = createContext<{ state: AppState; dispatch: Dispatch<AppAction> } | null>(null)
@@ -37,15 +37,29 @@ const formReducer = (state: FormState, action: AppAction) => {
   return state
 }
 
+const initialProductLoadingState = { isLoadingProducts: false }
+
+const loadingReducer = (state: LoadingState, action: AppAction) => {
+  switch (action.type) {
+    case loadingReducerConst.SET_LOADING:
+      return { ...state, isLoadingProducts: true }
+    case loadingReducerConst.SET_NOT_LOADING:
+      return { ...state, isLoadingProducts: false }
+  }
+  return state
+}
+
 const initialState: AppState = {
   cartState: initialCartState,
-  formState: initialFormState
+  formState: initialFormState,
+  loadingState: initialProductLoadingState
 }
 
 const rootReducer = (state: AppState, action: AppAction) => {
   return {
     cartState: cartReducer(state.cartState, action),
-    formState: formReducer(state.formState, action)
+    formState: formReducer(state.formState, action),
+    loadingState: loadingReducer(state.loadingState, action)
   }
 }
 
