@@ -1,5 +1,4 @@
 import { Layout } from '../layout/Layout'
-
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import React, { useEffect, useState } from 'react'
@@ -9,7 +8,7 @@ import { ProductType } from '../types/AppTypes'
 import { getProductById } from '../api/getProducts'
 import { useAppContext } from '../AppProvider'
 import { ToastContainer, toast } from 'react-toastify'
-import { productReducer } from '../config/constants'
+import { loadingReducerConst, productReducer } from '../config/constants'
 
 const notifySucces = () => toast.success('Product added to the cart')
 
@@ -24,11 +23,14 @@ export const ProductPage = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
+      dispatch({ type: loadingReducerConst.SET_LOADING })
       if (!productId) return
       const response = await getProductById(productId)
       setProduct(response.data)
+      dispatch({ type: loadingReducerConst.SET_NOT_LOADING })
     }
     fetchProduct()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productId])
 
   const handleQuantityChange = (e: React.FormEvent<HTMLInputElement>) => {
