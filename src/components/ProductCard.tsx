@@ -10,7 +10,7 @@ export const ProductCard = ({ product }: {product: ProductType}) => {
           <img
             src={product.imgSource}
             alt={product.name}
-            className="w-full max-w-[85%] duration-200"
+            className="w-full max-w-[85%] duration-200 aspect-auto"
             />
         </div>
         <div className='w-full py-2 text-center h-20 flex flex-col'>

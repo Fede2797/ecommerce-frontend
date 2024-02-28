@@ -21,7 +21,7 @@ export const Navbar = () => {
         <div className="w-full max-w-[1200px] h-[72px] mx-auto flex items-center justify-between">
           {/* Left side navbar */}
           <Link to={frontUrl}>
-            <div className="p-4 font-bold cursor-pointer tracking-[-0.5px]">
+            <div className="p-5 font-bold cursor-pointer tracking-[-0.5px]">
               Urbaneer
             </div>
           </Link>
@@ -50,7 +50,7 @@ export const Navbar = () => {
             </Link>
           </ul>
           {/* Right side navbar */}
-          <div className="p-4">
+          <div className="p-5">
             <Link to={frontUrl + cartRoute}>
               <figure className="relative w-[40px] h-[40px] flex items-center justify-center rounded-full cursor-pointer hover:bg-gray-100 transition-all duration-200">
                 {/* Circle displaying the amount of products in the cart */}
