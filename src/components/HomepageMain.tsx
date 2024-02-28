@@ -11,7 +11,7 @@ export const HomepageMain = ({ products }: {products: ProductType[]}) => {
       }
       {/* Image display section */}
       <section className='relative flex max-h-[calc(100vh-72px)] overflow-hidden items-center justify-center'>
-        <img className='md:mb-20' src="bg-shoes.jpg" alt="" />
+        <img className='md:mb-20' src="bg-shoes.webp" alt="" />
         <Link
           className='bottom-[25px] w-[175px] h-12 text-sm md:text-base md:w-[200px] md:h-14 bg-[#000] flex items-center justify-center text-white absolute z-10 md:bottom-[10vh] 2xl:bottom-[5vh] hover:bg-[#FFF] hover:text-[#000] transition-all duration-200 font-roboto tracking-[.35em] uppercase'
           to={frontUrl + productsRoute}

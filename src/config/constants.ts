@@ -54,9 +54,9 @@ export const options = [
 ]
 
 export const categories = [
-  { name: 'women', imgSource: 'url("/categories/women.jpg")' },
-  { name: 'men', imgSource: 'url("/categories/men.jpg")' },
-  { name: 'kids', imgSource: 'url("/categories/kids.jpg")' }
+  { name: 'women', imgSource: 'url("/categories/women.webp")' },
+  { name: 'men', imgSource: 'url("/categories/men.webp")' },
+  { name: 'kids', imgSource: 'url("/categories/kids.webp")' }
 ]
 
 export const menSizes = [
