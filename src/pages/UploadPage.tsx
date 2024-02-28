@@ -124,7 +124,7 @@ export const UploadPage = () => {
             onChange={handleChange}
           >
             <option value="men">Men</option>
-            <option value="women">Woman</option>
+            <option value="women">Women</option>
             <option value="kids">Kids</option>
           </select>
         </div>
