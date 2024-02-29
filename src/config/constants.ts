@@ -1,4 +1,5 @@
-export const frontUrl = 'http://localhost:5173/'
+export const frontUrl = 'https://fede2797.github.io/ecommerce-frontend/'
+// export const frontUrl = 'http://localhost:5173/'
 export const productsRoute = 'products'
 export const womenRoute = 'products/women'
 export const menRoute = 'products/men'
