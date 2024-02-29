@@ -27,7 +27,7 @@ export const Categories = () => {
                 key={category.name}
               >
                 <li
-                  className='relative group min-h-[200px] md:w-[200px] md:h-[240px] flex flex-col justify-center text-center overflow-hidden  text-white text-lg font-semibold tracking-wider cursor-pointer select-none bg-cover bg-center'
+                  className='relative group min-h-[200px] mt-5 md:w-[200px] md:h-[240px] flex flex-col justify-center text-center overflow-hidden  text-white text-lg font-semibold tracking-wider cursor-pointer select-none bg-cover bg-center rounded-xl'
                   style={{ backgroundImage: category.imgSource }}
                 >
                   <div className='hidden md:block absolute w-[200px] h-[240px] left-0 top-0 bg-[#000] bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-20'></div>
