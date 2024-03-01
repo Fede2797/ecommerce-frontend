@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const baseUrl = 'http://localhost:3000'
-const baseUrl = process.env.VITE_BACKEND_URL
+const baseUrl = 'https://ecommerce-backend-dev-jfnk.2.us-1.fl0.io'
 
 export const getPopularProducts = async () => {
   // Gets the 4 best selling products
