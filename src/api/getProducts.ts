@@ -5,9 +5,10 @@ const baseUrl = process.env.BACKEND_URL
 
 export const getPopularProducts = async () => {
   // Gets the 4 best selling products
+  console.log({ baseUrl })
+
   const url = new URL('/api/products/popular', baseUrl)
 
-  console.log({ baseUrl })
   console.log({ url })
 
   const response = await axios.get(url.href)
