@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3000'
+// const baseUrl = 'http://localhost:3000'
+const baseUrl = process.env.BACKEND_URL
 
 export const getPopularProducts = async () => {
   // Gets the 4 best selling products
