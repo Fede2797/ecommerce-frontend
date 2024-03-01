@@ -1,4 +1,4 @@
-export const frontUrl = 'https://fede2797.github.io/ecommerce-frontend/'
+export const frontUrl = 'https://ecommerce-frontend-two-tau.vercel.app/'
 // export const frontUrl = 'http://localhost:5173/'
 export const productsRoute = 'products'
 export const womenRoute = 'products/women'
