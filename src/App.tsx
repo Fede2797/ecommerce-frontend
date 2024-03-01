@@ -14,7 +14,7 @@ import { checkoutSection } from './config/constants'
 function App () {
   return (
     <AppProvider>
-      <BrowserRouter basename='https://fede2797.github.io/ecommerce-frontend'>
+      <BrowserRouter>
         <Routes>
           <Route path="/" Component={Homepage} />
           <Route path="/cart" Component={CartPage} />
